@@ -1,12 +1,13 @@
 'use strict';
 /* Service worker: guarda o app no aparelho para abrir sem internet.
    Estratégia: responde do cache e atualiza em segundo plano (a nova versão aparece na abertura seguinte). */
-const CACHE = 'treino-v1';
+const CACHE = 'treino-v2';
 const ASSETS = [
   './',
   './index.html',
   './style.css',
   './app.js',
+  './theme.js',
   './manifest.webmanifest',
   './icon-192.png',
   './icon-512.png',

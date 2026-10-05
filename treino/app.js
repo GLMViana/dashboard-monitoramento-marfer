@@ -13,6 +13,42 @@
   const WD = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
   const MONTHS = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 
+  /* ---------- ícones ---------- */
+  const IC = {
+    dumbbell: '<path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/>',
+    plus: '<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>',
+    minus: '<line x1="5" y1="12" x2="19" y2="12"/>',
+    check: '<polyline points="20 6 9 17 4 12"/>',
+    x: '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>',
+    trash: '<polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>',
+    right: '<polyline points="9 18 15 12 9 6"/>',
+    left: '<polyline points="15 18 9 12 15 6"/>',
+    down: '<polyline points="6 9 12 15 18 9"/>',
+    up: '<polyline points="18 15 12 9 6 15"/>',
+    back: '<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>',
+    play: '<polygon points="6 3 20 12 6 21 6 3"/>',
+    clock: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+    download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>',
+    upload: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>',
+    share: '<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>',
+    award: '<circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>',
+    zap: '<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>',
+    flame: '<path d="M12 2c.6 4.2 5 6 5 11a5 5 0 0 1-10 0c0-2 1-3.4 2.2-4.4.3 1.6 1 2.4 2 2.4C11 8 10.4 5 12 2z"/>',
+    trend: '<polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>',
+    clip: '<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>',
+    cal: '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',
+    user: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+    scale: '<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10a5 5 0 0 1 8 0"/><path d="M12 10l2-2.5"/>',
+    shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+    phone: '<rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>',
+    moon: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>',
+    sun: '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>',
+    auto: '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/>',
+    save: '<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/>'
+  };
+  const ic = (n, c = '') => `<svg class="ic${c ? ' ' + c : ''}" viewBox="0 0 24 24" aria-hidden="true">${IC[n]}</svg>`;
+  const lbl = (i, t) => `<span class="label">${ic(i)}${t}</span>`;
+
   /* ---------- utilidades ---------- */
   const $ = (s, r = document) => r.querySelector(s);
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -38,9 +74,10 @@
   };
   const weekStart = d => { const x = new Date(d); x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); return ymd(x); };
   const sgn = (n, u) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${fmt(Math.abs(n))}${u}`;
+  const plural = (n, a, b) => n === 1 ? a : b;
 
   /* ---------- estado ---------- */
-  const blank = () => ({ v: 1, plans: [], sessions: [], weights: [], active: null, settings: { name: '', rest: 90, lastBackup: 0 } });
+  const blank = () => ({ v: 1, plans: [], sessions: [], weights: [], active: null, settings: { name: '', rest: 90, lastBackup: 0, theme: 'auto' } });
 
   const cleanSets = a => (Array.isArray(a) ? a : []).slice(0, 60).map(s => ({
     kg: num(s && s.kg), reps: Math.round(num(s && s.reps)), done: !!(s && s.done)
@@ -81,7 +118,8 @@
     o.settings = {
       name: String(st.name ?? '').trim().slice(0, 30),
       rest: [0, 30, 60, 90, 120, 180, 240].includes(Number(st.rest)) ? Number(st.rest) : 90,
-      lastBackup: Number(st.lastBackup) > 0 ? Number(st.lastBackup) : 0
+      lastBackup: Number(st.lastBackup) > 0 ? Number(st.lastBackup) : 0,
+      theme: ['auto', 'dark', 'light'].includes(st.theme) ? st.theme : 'auto'
     };
     return o;
   }
@@ -104,6 +142,19 @@
   const save = () => { clearTimeout(saveTimer); saveTimer = setTimeout(saveNow, 250); };
   window.addEventListener('pagehide', saveNow);
   document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') saveNow(); });
+
+  /* ---------- tema ---------- */
+  const lightMQ = window.matchMedia ? matchMedia('(prefers-color-scheme: light)') : null;
+  function applyTheme() {
+    const t = S.settings.theme, root = document.documentElement;
+    if (t === 'dark' || t === 'light') root.setAttribute('data-theme', t); else root.removeAttribute('data-theme');
+    const dark = t === 'dark' || (t !== 'light' && !(lightMQ && lightMQ.matches));
+    document.querySelectorAll('meta[name="theme-color"]').forEach(m => m.remove());
+    const m = document.createElement('meta');
+    m.name = 'theme-color'; m.content = dark ? '#050505' : '#ffffff';
+    document.head.appendChild(m);
+  }
+  if (lightMQ && lightMQ.addEventListener) lightMQ.addEventListener('change', applyTheme);
 
   /* ---------- histórico e recordes ---------- */
   function history() {
@@ -194,14 +245,18 @@
       const v = min + (max - min) * k / 3, y = Y(v);
       g += `<line class="grid" x1="${pl}" x2="${W - pr}" y1="${y.toFixed(1)}" y2="${y.toFixed(1)}"/><text class="ax" x="${pl - 6}" y="${(y + 3).toFixed(1)}" text-anchor="end">${fmt1(v)}</text>`;
     }
-    const line = points.map((p, i) => `${X(i).toFixed(1)},${Y(p.y).toFixed(1)}`).join(' ');
+    const xy = points.map((p, i) => `${X(i).toFixed(1)},${Y(p.y).toFixed(1)}`);
+    const area = points.length > 1
+      ? `<defs><linearGradient id="${o.id}" x1="0" y1="0" x2="0" y2="1"><stop class="g0" offset="0"/><stop class="g1" offset="1"/></linearGradient></defs>` +
+        `<path d="M${X(0).toFixed(1)},${H - pb} L${xy.join(' L')} L${X(points.length - 1).toFixed(1)},${H - pb} Z" fill="url(#${o.id})"/>`
+      : '';
     const dots = points.map((p, i) =>
       `<circle class="pt${p.pr ? ' pr' : ''}${i === o.sel ? ' sel' : ''}" cx="${X(i).toFixed(1)}" cy="${Y(p.y).toFixed(1)}" r="${p.pr ? 5 : 4}"/>` +
       `<circle data-act="${o.act}" data-i="${i}" cx="${X(i).toFixed(1)}" cy="${Y(p.y).toFixed(1)}" r="15" fill="transparent"/>`).join('');
     const xl = points.length > 1
       ? `<text class="ax" x="${pl}" y="${H - 6}">${esc(points[0].short)}</text><text class="ax" x="${W - pr}" y="${H - 6}" text-anchor="end">${esc(last(points).short)}</text>`
       : `<text class="ax" x="${W / 2}" y="${H - 6}" text-anchor="middle">${esc(points[0].short)}</text>`;
-    return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Gráfico de evolução">${g}<polyline class="ln" points="${line}"/>${dots}${xl}</svg>`;
+    return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Gráfico de evolução">${g}${area}<polyline class="ln" points="${xy.join(' ')}"/>${dots}${xl}</svg>`;
   }
   function spark(vals) {
     if (vals.length < 2) return '<svg class="spark" viewBox="0 0 84 28"></svg>';
@@ -249,6 +304,7 @@
   /* ---------- tela: Hoje ---------- */
   const greeting = () => { const h = new Date().getHours(); return h < 12 ? 'Bom dia' : h < 18 ? 'Boa tarde' : 'Boa noite'; };
   const elapsed = () => { const s = Math.max(0, Math.floor((Date.now() - S.active.start) / 1000)); return `${pad(Math.floor(s / 60))}:${pad(s % 60)}`; };
+  const setsCount = a => a.entries.reduce((r, e) => ({ d: r.d + e.sets.filter(s => s.done).length, t: r.t + e.sets.length }), { d: 0, t: 0 });
 
   function vHoje() {
     if (S.active) return vWorkout();
@@ -257,26 +313,35 @@
     const week = S.sessions.filter(s => weekStart(parseYmd(s.date)) === wk).length;
     const recent = [...S.sessions].sort((a, b) => b.start - a.start).slice(0, 3);
     const nm = S.settings.name;
+    const others = S.plans.filter(p => !nxt || p.id !== nxt.id);
+    const ld = nxt && lastDoneOf(nxt.id);
     return `
     <div class="stack">
-      <div><div class="h1">${greeting()}${nm ? ', ' + esc(nm) : ''}</div><div class="muted">${fmtDay(ymd())}</div></div>
+      <header class="between"><div><div class="eyebrow">${fmtDay(ymd())}</div>
+        <h1 class="h1">${greeting()}${nm ? `,<br><span class="red">${esc(nm)}</span>` : ''}</h1></div>
+        <div class="mark">${ic('dumbbell')}</div></header>
       <div class="stats">
-        <div class="stat"><b>${week}</b><span>nesta semana</span></div>
-        <div class="stat"><b>${weekStreak()}</b><span>semanas seguidas</span></div>
-        <div class="stat"><b>${S.sessions.length}</b><span>treinos no total</span></div>
+        <div class="stat">${ic('zap')}<b>${week}</b><span>nesta semana</span></div>
+        <div class="stat">${ic('flame')}<b>${weekStreak()}</b><span>semanas seguidas</span></div>
+        <div class="stat">${ic('award')}<b>${S.sessions.length}</b><span>treinos no total</span></div>
       </div>
-      <div class="label" style="margin:16px 0 0">Começar treino</div>
-      ${S.plans.length ? S.plans.map(p => {
-        const ld = lastDoneOf(p.id), isNext = nxt && nxt.id === p.id;
-        return `<div class="card item${isNext ? ' hl' : ''}">
+      ${nxt ? `<div class="hero">
+        <div class="eyebrow red">Próximo treino</div>
+        <div class="hero-title">${esc(nxt.name)}</div>
+        <div class="muted small">${nxt.exercises.length} exercício${plural(nxt.exercises.length, '', 's')} · ${ld ? 'último ' + ago(ld) : 'ainda não feito'}</div>
+        ${nxt.exercises.length ? `<div class="chips">${nxt.exercises.slice(0, 4).map(n => `<span class="chip">${esc(n)}</span>`).join('')}${nxt.exercises.length > 4 ? `<span class="chip">+${nxt.exercises.length - 4}</span>` : ''}</div>` : '<div class="mt"></div>'}
+        <button class="btn primary lg block" data-act="start" data-plan="${esc(nxt.id)}">${ic('play')}Iniciar treino</button>
+      </div>` : `<div class="card empty">${ic('clip')}<b>Nenhuma ficha ainda</b>Crie uma ficha com seus exercícios ou comece um treino livre.
+        <div class="mt"><button class="btn primary" data-act="tab" data-tab="fichas">${ic('plus')}Criar ficha</button></div></div>`}
+      ${others.length ? `<div>${lbl('clip', 'Outras fichas')}<div class="stack">${others.map(p => {
+        const d = lastDoneOf(p.id);
+        return `<div class="card item"><div class="tile">${ic('clip')}</div>
           <div class="body"><div class="title">${esc(p.name)}</div>
-          <div class="muted small">${p.exercises.length} exercício${p.exercises.length === 1 ? '' : 's'} · ${ld ? 'último ' + ago(ld) : 'ainda não feito'}</div></div>
-          ${isNext ? '<span class="badge pr">próximo</span>' : ''}
-          <button class="btn primary sm" data-act="start" data-plan="${esc(p.id)}">Iniciar</button></div>`;
-      }).join('') : `<div class="card empty"><b>Nenhuma ficha ainda</b>Crie uma ficha com seus exercícios ou comece um treino livre.
-        <div class="mt"><button class="btn" data-act="tab" data-tab="fichas">Criar ficha</button></div></div>`}
-      <button class="btn block" data-act="start" data-plan="">+ Treino livre</button>
-      ${recent.length ? `<div class="label" style="margin:16px 0 0">Últimos treinos</div>${recent.map(sessCard).join('')}` : ''}
+          <div class="muted small">${p.exercises.length} exercício${plural(p.exercises.length, '', 's')} · ${d ? ago(d) : 'nunca feito'}</div></div>
+          <button class="btn primary sm" data-act="start" data-plan="${esc(p.id)}">${ic('play')}Iniciar</button></div>`;
+      }).join('')}</div></div>` : ''}
+      <button class="btn block" data-act="start" data-plan="">${ic('plus')}Treino livre</button>
+      ${recent.length ? `<div>${lbl('clock', 'Últimos treinos')}<div class="stack">${recent.map(sessCard).join('')}</div></div>` : ''}
     </div>`;
   }
 
@@ -288,8 +353,11 @@
       ? `Última vez (${fmtShort(lst.date)}): ${setsText(lst.sets)}${rec ? ` · recorde ${fmt(rec)} kg` : ''}`
       : 'Primeira vez neste exercício';
     const ph = lst ? lst.sets : [];
+    const done = e.sets.filter(s => s.done).length;
     return `<div class="card ex">
-      <div class="between"><div class="name">${esc(e.name)}</div><button class="btn ghost danger sm" data-act="rm-ex" data-i="${i}" aria-label="Remover exercício">Remover</button></div>
+      <div class="between"><div class="name">${esc(e.name)}</div>
+        <div class="row"><span class="badge" data-cnt="${i}">${done}/${e.sets.length}</span>
+        <button class="btn ghost danger sm icon" data-act="rm-ex" data-i="${i}" aria-label="Remover exercício">${ic('trash')}</button></div></div>
       <div class="hint">${esc(hint)}</div>
       <div class="set-head"><span>#</span><span>kg</span><span>reps</span><span></span></div>
       ${e.sets.map((s, j) => {
@@ -297,41 +365,52 @@
         return `<div class="set${s.done ? ' done' : ''}"><span class="n">${j + 1}</span>
           <input inputmode="decimal" autocomplete="off" placeholder="${p && p.kg ? fmt(p.kg) : '0'}" value="${s.kg ? fmt(s.kg).replace(/\./g, '') : ''}" data-in="kg" data-i="${i}" data-j="${j}" aria-label="Carga em kg, série ${j + 1}">
           <input inputmode="numeric" autocomplete="off" placeholder="${p && p.reps ? p.reps : '0'}" value="${s.reps || ''}" data-in="reps" data-i="${i}" data-j="${j}" aria-label="Repetições, série ${j + 1}">
-          <button class="chk" data-act="toggle-set" data-i="${i}" data-j="${j}" aria-label="Série feita">✓</button></div>`;
+          <button class="chk" data-act="toggle-set" data-i="${i}" data-j="${j}" aria-label="Série feita">${ic('check')}</button></div>`;
       }).join('')}
-      <div class="row mt"><button class="btn sm grow" data-act="add-set" data-i="${i}">+ Série</button>
-        ${e.sets.length > 1 ? `<button class="btn ghost sm" data-act="rm-set" data-i="${i}">− Série</button>` : ''}</div>
+      <div class="row mt"><button class="btn sm grow" data-act="add-set" data-i="${i}">${ic('plus')}Série</button>
+        ${e.sets.length > 1 ? `<button class="btn ghost sm" data-act="rm-set" data-i="${i}">${ic('minus')}Série</button>` : ''}</div>
     </div>`;
   }
 
   function vWorkout() {
-    const a = S.active, H = history();
+    const a = S.active, H = history(), c = setsCount(a);
     return `<div class="stack">
-      <div><div class="h1">${esc(a.planName || 'Treino livre')}</div>
-      <div class="muted">${fmtDay(a.date)} · início ${fmtTime(a.start)} · <b id="elapsed">${elapsed()}</b></div></div>
+      <div class="between"><div><div class="eyebrow">${fmtDay(a.date)} · início ${fmtTime(a.start)}</div><h1 class="h1">${esc(a.planName || 'Treino livre')}</h1></div>
+        <div class="clock">${ic('clock')}<span id="elapsed">${elapsed()}</span></div></div>
+      <div><div class="prog"><i id="wprog" style="width:${c.t ? Math.round(c.d / c.t * 100) : 0}%"></i></div>
+        <div class="muted small mt" id="wcnt" style="margin-top:6px">${c.d} de ${c.t} séries</div></div>
       ${a.entries.map((e, i) => exCard(e, i, H)).join('')}
-      <div class="card"><span class="label">Adicionar exercício</span>
+      <div class="card">${lbl('plus', 'Adicionar exercício')}
         <div class="row"><input id="newEx" list="exlist" maxlength="60" placeholder="Nome do exercício" autocomplete="off" data-enter="add-ex">
         <button class="btn" data-act="add-ex">Adicionar</button></div></div>
       <div class="card"><label class="label" for="note">Observações</label>
         <textarea id="note" rows="2" maxlength="500" data-in="note" placeholder="Como foi o treino?">${esc(a.note)}</textarea></div>
-      <button class="btn primary block" data-act="finish">Finalizar treino</button>
+      <button class="btn primary lg block" data-act="finish">${ic('check')}Finalizar treino</button>
       <button class="btn ghost danger block" data-act="discard">Descartar treino</button>
     </div>`;
+  }
+  function updateProgress() {
+    const a = S.active;
+    if (!a) return;
+    const c = setsCount(a);
+    a.entries.forEach((e, i) => { const b = $(`[data-cnt="${i}"]`); if (b) b.textContent = `${e.sets.filter(s => s.done).length}/${e.sets.length}`; });
+    const bar = $('#wprog'); if (bar) bar.style.width = (c.t ? Math.round(c.d / c.t * 100) : 0) + '%';
+    const t = $('#wcnt'); if (t) t.textContent = `${c.d} de ${c.t} séries`;
   }
 
   function sessCard(s) {
     const open = ui.open === s.id;
-    const dur = s.end ? ` · ${fmtDur(s.end - s.start)}` : '';
+    const d = parseYmd(s.date);
     const vol = sessVolume(s);
-    return `<div class="card stack" ${open ? '' : `data-act="sess-toggle" data-id="${esc(s.id)}"`} style="cursor:pointer">
-      <div class="between" ${open ? `data-act="sess-toggle" data-id="${esc(s.id)}"` : ''}>
-        <div><div class="title"><b>${fmtDay(s.date)}</b> · ${fmtTime(s.start)}${dur}</div>
-        <div class="muted small">${esc(s.planName || 'Treino livre')} · ${s.entries.length} exercício${s.entries.length === 1 ? '' : 's'}${vol ? ` · ${fmt(vol)} kg de volume` : ''}</div></div>
-        <span class="chev">${open ? '▴' : '▾'}</span></div>
+    const meta = [fmtTime(s.start) + (s.end ? ' · ' + fmtDur(s.end - s.start) : ''), `${s.entries.length} exerc.`, vol ? `${fmt(vol)} kg` : ''].filter(Boolean).join(' · ');
+    return `<div class="card stack">
+      <div class="between sess-head" data-act="sess-toggle" data-id="${esc(s.id)}">
+        <div class="row"><div class="date"><b>${pad(d.getDate())}</b><span>${WD[d.getDay()]}</span></div>
+          <div><div class="title">${esc(s.planName || 'Treino livre')}</div><div class="muted small">${esc(meta)}</div></div></div>
+        ${ic(open ? 'up' : 'down', 'chev')}</div>
       ${open ? `<div>${s.entries.map(e => `<div class="ex-line"><span class="nm">${esc(e.name)}</span><span class="sets-line">${esc(setsText(e.sets.filter(x => x.done)))}</span></div>`).join('')}</div>
         ${s.note ? `<div class="muted small">“${esc(s.note)}”</div>` : ''}
-        <button class="btn ghost danger sm" data-act="sess-del" data-id="${esc(s.id)}">Excluir treino</button>` : ''}
+        <button class="btn ghost danger sm" data-act="sess-del" data-id="${esc(s.id)}">${ic('trash')}Excluir treino</button>` : ''}
     </div>`;
   }
 
@@ -339,31 +418,32 @@
   function vFichas() {
     if (ui.plan) return vPlanEdit();
     return `<div class="stack">
-      <div class="between"><div class="h1">Fichas</div><button class="btn primary sm" data-act="plan-new">+ Nova ficha</button></div>
+      <div class="between"><h1 class="h1">Fichas</h1><button class="btn primary sm" data-act="plan-new">${ic('plus')}Nova ficha</button></div>
       ${S.plans.length ? S.plans.map(p => `<div class="card item" data-act="plan-edit" data-id="${esc(p.id)}">
+        <div class="tile">${ic('clip')}</div>
         <div class="body"><div class="title">${esc(p.name)}</div>
         <div class="muted small">${p.exercises.length ? esc(p.exercises.slice(0, 3).join(', ') + (p.exercises.length > 3 ? '…' : '')) : 'Sem exercícios'}</div></div>
-        <span class="chev">›</span></div>`).join('')
-        : `<div class="card empty"><b>Monte sua primeira ficha</b>Ex.: Treino A (peito e tríceps), Treino B (costas e bíceps)...</div>`}
+        ${ic('right', 'chev')}</div>`).join('')
+        : `<div class="card empty">${ic('clip')}<b>Monte sua primeira ficha</b>Ex.: Treino A (peito e tríceps), Treino B (costas e bíceps)...</div>`}
     </div>`;
   }
   function vPlanEdit() {
     const p = S.plans.find(x => x.id === ui.plan);
     if (!p) { ui.plan = null; return vFichas(); }
     return `<div class="stack">
-      <div class="between"><button class="btn ghost sm" data-act="plan-back">← Fichas</button>
-        <button class="btn ghost danger sm" data-act="plan-del">Excluir</button></div>
+      <div class="between"><button class="btn ghost sm" data-act="plan-back">${ic('back')}Fichas</button>
+        <button class="btn ghost danger sm" data-act="plan-del">${ic('trash')}Excluir</button></div>
       <div class="card"><label class="label" for="pname">Nome da ficha</label>
         <input id="pname" maxlength="40" value="${esc(p.name)}" data-in="plan-name"></div>
-      <div class="card"><span class="label">Exercícios</span>
+      <div class="card">${lbl('dumbbell', 'Exercícios')}
         ${p.exercises.length ? p.exercises.map((n, i) => `<div class="ex-row"><span>${esc(n)}</span>
-          <button class="btn ghost sm" data-act="plan-up" data-i="${i}" aria-label="Subir"${i === 0 ? ' disabled' : ''}>▲</button>
-          <button class="btn ghost sm" data-act="plan-down" data-i="${i}" aria-label="Descer"${i === p.exercises.length - 1 ? ' disabled' : ''}>▼</button>
-          <button class="btn ghost danger sm" data-act="plan-rm-ex" data-i="${i}" aria-label="Remover">✕</button></div>`).join('')
+          <button class="btn ghost sm" data-act="plan-up" data-i="${i}" aria-label="Subir"${i === 0 ? ' disabled' : ''}>${ic('up')}</button>
+          <button class="btn ghost sm" data-act="plan-down" data-i="${i}" aria-label="Descer"${i === p.exercises.length - 1 ? ' disabled' : ''}>${ic('down')}</button>
+          <button class="btn ghost danger sm" data-act="plan-rm-ex" data-i="${i}" aria-label="Remover">${ic('x')}</button></div>`).join('')
           : '<p class="muted small">Nenhum exercício ainda.</p>'}
         <div class="row mt"><input id="newEx" list="exlist" maxlength="60" placeholder="Novo exercício" autocomplete="off" data-enter="plan-add-ex">
-        <button class="btn" data-act="plan-add-ex">Adicionar</button></div></div>
-      <button class="btn primary block" data-act="start" data-plan="${esc(p.id)}">Iniciar esta ficha</button>
+        <button class="btn" data-act="plan-add-ex">${ic('plus')}Adicionar</button></div></div>
+      <button class="btn primary lg block" data-act="start" data-plan="${esc(p.id)}">${ic('play')}Iniciar esta ficha</button>
     </div>`;
   }
 
@@ -372,21 +452,21 @@
     const H = history();
     if (ui.evo && H.has(ui.evo)) return vEvoDetail(H.get(ui.evo));
     ui.evo = null;
-    if (!H.size) return `<div class="stack"><div class="h1">Evolução</div><div class="card empty"><b>Ainda sem dados</b>Finalize um treino para ver sua evolução por exercício.</div></div>`;
+    if (!H.size) return `<div class="stack"><h1 class="h1">Evolução</h1><div class="card empty">${ic('trend')}<b>Ainda sem dados</b>Finalize um treino para ver sua evolução por exercício.</div></div>`;
     const list = [...H.values()].sort((a, b) => last(b.items).start - last(a.items).start);
     const prs = prEvents().filter(e => Date.now() - e.start < 30 * DAY).slice(0, 5);
     return `<div class="stack">
-      <div class="h1">Evolução</div>
-      ${prs.length ? `<div class="card hl"><span class="label">Recordes dos últimos 30 dias</span>
+      <h1 class="h1">Evolução</h1>
+      ${prs.length ? `<div class="card hl">${lbl('award', 'Recordes dos últimos 30 dias')}
         ${prs.map(e => `<div class="ex-line"><span>${esc(prText(e))}</span><span class="muted small">${fmtShort(e.date)}</span></div>`).join('')}</div>` : ''}
       ${list.map(h => {
         const bw = isBodyweight(h), m = bw ? METRICS.reps : METRICS.kg;
         const vals = h.items.map(m.get), cur = last(vals), d = cur - vals[0];
         const badge = h.items.length < 2 ? '<span class="badge">1ª sessão</span>'
-          : d > 0 ? `<span class="badge ok">▲ ${sgn(d, m.unit)}</span>` : d < 0 ? `<span class="badge bad">▼ ${sgn(d, m.unit)}</span>` : '<span class="badge">= igual</span>';
+          : d > 0 ? `<span class="badge ok">${ic('up')}${sgn(d, m.unit)}</span>` : d < 0 ? `<span class="badge bad">${ic('down')}${sgn(d, m.unit)}</span>` : '<span class="badge">igual</span>';
         return `<div class="card item" data-act="evo-open" data-key="${esc(h.key)}">
           <div class="body"><div class="title">${esc(h.name)}</div>
-          <div class="muted small">${fmt(cur)}${m.unit} · ${h.items.length} sessão${h.items.length === 1 ? '' : 'ões'}</div></div>
+          <div class="muted small">${fmt(cur)}${m.unit} · ${h.items.length} sessão${plural(h.items.length, '', 'ões')}</div></div>
           ${spark(vals.slice(-12))}${badge}</div>`;
       }).join('')}
     </div>`;
@@ -408,20 +488,20 @@
     const dFirst = cur.y - first.y, dPrev = prev ? cur.y - prev.y : 0;
     const cls = d => d > 0 ? 'up' : d < 0 ? 'down' : 'muted';
     return `<div class="stack">
-      <div class="between"><button class="btn ghost sm" data-act="evo-back">← Evolução</button></div>
-      <div class="h1">${esc(h.name)}</div>
+      <div class="between"><button class="btn ghost sm" data-act="evo-back">${ic('back')}Evolução</button></div>
+      <h1 class="h1">${esc(h.name)}</h1>
       <div class="stats">
-        <div class="stat"><b>${fmt(top)}</b><span>recorde (${m.unit.trim()})</span></div>
-        <div class="stat"><b>${fmt(cur.y)}</b><span>última (${m.unit.trim()})</span></div>
-        <div class="stat"><b>${h.items.length}</b><span>sessões</span></div>
+        <div class="stat">${ic('award')}<b>${fmt(top)}</b><span>recorde (${m.unit.trim()})</span></div>
+        <div class="stat">${ic('zap')}<b>${fmt(cur.y)}</b><span>última (${m.unit.trim()})</span></div>
+        <div class="stat">${ic('cal')}<b>${h.items.length}</b><span>sessões</span></div>
       </div>
       ${pts.length > 1 ? `<div class="card stack">
         <div class="between"><span>Desde a 1ª vez (${fmtShort(first.it.date)})</span><b class="${cls(dFirst)}">${dFirst === 0 ? 'igual' : sgn(dFirst, m.unit)}</b></div>
         <div class="between"><span>Em relação ao treino anterior</span><b class="${cls(dPrev)}">${dPrev === 0 ? 'igual' : sgn(dPrev, m.unit)}</b></div></div>` : ''}
       ${bw ? '' : `<div class="seg" role="group">${['kg', 'e1rm', 'vol'].map(k => `<button data-act="evo-metric" data-m="${k}" class="${k === mk ? 'on' : ''}">${METRICS[k].label}</button>`).join('')}</div>`}
-      <div class="card">${chart(view, { act: 'evo-point', sel })}
+      <div class="card">${chart(view, { act: 'evo-point', sel, id: 'gEvo' })}
         <div class="muted small" style="text-align:center;margin-top:6px">${esc(view[sel].label)}${view[sel].pr ? ' · recorde' : ''}</div></div>
-      <div class="card"><span class="label">Sessões</span>
+      <div class="card">${lbl('clock', 'Sessões')}
         ${[...pts].reverse().map(p => `<div class="ex-line"><span class="nm">${fmtDay(p.it.date)}${p.pr ? ' <span class="badge pr">PR</span>' : ''}</span><span class="sets-line">${esc(setsText(p.it.sets))}</span></div>`).join('')}</div>
     </div>`;
   }
@@ -435,7 +515,7 @@
     S.sessions.forEach(s => { counts[s.date] = (counts[s.date] || 0) + 1; });
     const today = ymd();
     let cells = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'].map(d => `<div class="wd">${d}</div>`).join('');
-    for (let i = 0; i < off; i++) cells += '<button class="empty" tabindex="-1" aria-hidden="true"></button>';
+    for (let i = 0; i < off; i++) cells += '<button class="blank" tabindex="-1" aria-hidden="true"></button>';
     let inMonth = 0;
     for (let d = 1; d <= dim; d++) {
       const k = `${y}-${pad(m + 1)}-${pad(d)}`;
@@ -446,15 +526,15 @@
     if (ui.day) list = list.filter(s => s.date === ui.day);
     const shown = list.slice(0, ui.limit);
     return `<div class="stack">
-      <div class="h1">Histórico</div>
+      <h1 class="h1">Histórico</h1>
       <div class="card stack">
-        <div class="between"><button class="btn ghost sm" data-act="cal-prev" aria-label="Mês anterior">‹</button>
-          <div style="text-align:center"><b>${MONTHS[m]} ${y}</b><div class="muted small">${inMonth} treino${inMonth === 1 ? '' : 's'} no mês</div></div>
-          <button class="btn ghost sm" data-act="cal-next" aria-label="Próximo mês">›</button></div>
+        <div class="between"><button class="btn ghost sm icon" data-act="cal-prev" aria-label="Mês anterior">${ic('left')}</button>
+          <div style="text-align:center"><b>${MONTHS[m]} ${y}</b><div class="muted small">${inMonth} treino${plural(inMonth, '', 's')} no mês</div></div>
+          <button class="btn ghost sm icon" data-act="cal-next" aria-label="Próximo mês">${ic('right')}</button></div>
         <div class="cal">${cells}</div>
       </div>
       ${ui.day ? `<div class="between"><b>${fmtDay(ui.day)}</b><button class="btn ghost sm" data-act="day-clear">Ver todos</button></div>` : ''}
-      ${shown.length ? shown.map(sessCard).join('') : `<div class="card empty"><b>Nenhum treino ${ui.day ? 'neste dia' : 'registrado'}</b></div>`}
+      ${shown.length ? shown.map(sessCard).join('') : `<div class="card empty">${ic('cal')}<b>Nenhum treino ${ui.day ? 'neste dia' : 'registrado'}</b></div>`}
       ${list.length > shown.length ? `<button class="btn block" data-act="more">Mostrar mais</button>` : ''}
     </div>`;
   }
@@ -467,47 +547,52 @@
     const sel = ui.wSel >= 0 && ui.wSel < pts.length ? ui.wSel : pts.length - 1;
     const d = ws.length > 1 ? last(ws).kg - ws[0].kg : 0;
     const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const th = S.settings.theme;
     return `<div class="stack">
-      <div class="h1">Perfil</div>
+      <h1 class="h1">Perfil</h1>
       <div class="card stack">
         <div><label class="label" for="pn">Seu nome (opcional)</label><input id="pn" maxlength="30" value="${esc(S.settings.name)}" data-ch="name" autocomplete="off"></div>
         <div><label class="label" for="pr">Descanso entre séries</label>
         <select id="pr" data-ch="rest">${[[0, 'Desligado'], [30, '30 s'], [60, '1 min'], [90, '1 min 30'], [120, '2 min'], [180, '3 min'], [240, '4 min']].map(([v, l]) => `<option value="${v}"${S.settings.rest === v ? ' selected' : ''}>${l}</option>`).join('')}</select></div>
+        <div><span class="label">Aparência</span>
+        <div class="seg" role="group">${[['auto', 'Auto', 'auto'], ['dark', 'Escuro', 'moon'], ['light', 'Claro', 'sun']].map(([v, l, i]) => `<button data-act="theme" data-v="${v}" class="${th === v ? 'on' : ''}">${ic(i)}${l}</button>`).join('')}</div></div>
       </div>
 
-      <div class="card stack"><span class="label">Peso corporal</span>
+      <div class="card stack">${lbl('scale', 'Peso corporal')}
         <div class="row"><input id="wkg" inputmode="decimal" placeholder="kg" aria-label="Peso em kg" data-enter="weight-add">
         <input id="wdt" type="date" value="${ymd()}" max="${ymd()}" aria-label="Data" style="max-width:150px">
-        <button class="btn primary" data-act="weight-add">Salvar</button></div>
-        ${pts.length > 1 ? `${chart(pts, { act: 'wt-point', sel })}<div class="muted small" style="text-align:center;margin-top:6px">${esc(pts[sel].label)} · variação total ${sgn(d, ' kg')}</div>` : ''}
-        ${ws.length ? `<div>${[...ws].reverse().slice(0, 6).map(w => `<div class="ex-line"><span>${fmtDay(w.date)}</span><span>${fmt(w.kg)} kg <button class="btn ghost danger sm" data-act="weight-del" data-d="${w.date}" aria-label="Apagar">✕</button></span></div>`).join('')}</div>` : '<p class="muted small">Nenhum registro de peso. É opcional.</p>'}
+        <button class="btn primary" data-act="weight-add" aria-label="Salvar peso">${ic('check')}</button></div>
+        ${pts.length > 1 ? `${chart(pts, { act: 'wt-point', sel, id: 'gPeso' })}<div class="muted small" style="text-align:center;margin-top:6px">${esc(pts[sel].label)} · variação total ${sgn(d, ' kg')}</div>` : ''}
+        ${ws.length ? `<div>${[...ws].reverse().slice(0, 6).map(w => `<div class="ex-line"><span>${fmtDay(w.date)}</span><span>${fmt(w.kg)} kg <button class="btn ghost danger sm icon" data-act="weight-del" data-d="${w.date}" aria-label="Apagar">${ic('x')}</button></span></div>`).join('')}</div>` : '<p class="muted small">Nenhum registro de peso. É opcional.</p>'}
       </div>
 
-      <div class="card stack"><span class="label">Compartilhar</span>
+      <div class="card stack">${lbl('share', 'Compartilhar')}
         <p class="muted small">Só sai do seu aparelho o que você mandar. O resumo traz treinos e recordes dos últimos 30 dias.</p>
-        <button class="btn block" data-act="share-summary">Enviar resumo para um amigo</button></div>
+        <button class="btn block" data-act="share-summary">${ic('share')}Enviar resumo para um amigo</button></div>
 
-      <div class="card stack"><span class="label">Backup</span>
+      <div class="card stack">${lbl('save', 'Backup')}
         <p class="muted small">Seus dados ficam só neste aparelho. Se limpar o navegador ou trocar de celular, eles somem. Exporte de vez em quando e guarde o arquivo (Drive, WhatsApp, e-mail).${S.settings.lastBackup ? ` Último backup: ${fmtShort(ymd(new Date(S.settings.lastBackup)))}.` : ''}</p>
-        <div class="row"><button class="btn grow" data-act="export">Exportar backup</button><button class="btn grow" data-act="import">Importar</button></div></div>
+        <div class="row"><button class="btn grow" data-act="export">${ic('download')}Exportar</button><button class="btn grow" data-act="import">${ic('upload')}Importar</button></div></div>
 
-      ${standalone() ? '' : `<div class="card stack"><span class="label">Instalar no celular</span>
-        ${deferredInstall ? '<button class="btn primary block" data-act="install">Instalar app</button>'
+      ${standalone() ? '' : `<div class="card stack">${lbl('phone', 'Instalar no celular')}
+        ${deferredInstall ? `<button class="btn primary block" data-act="install">${ic('download')}Instalar app</button>`
           : ios ? '<p class="muted small">No iPhone: abra no Safari, toque em Compartilhar e depois em “Adicionar à Tela de Início”.</p>'
           : '<p class="muted small">No Android (Chrome): menu ⋮ e depois “Instalar app” ou “Adicionar à tela inicial”.</p>'}</div>`}
 
-      <button class="btn ghost danger block" data-act="wipe">Apagar todos os meus dados</button>
-      <p class="muted small" style="text-align:center">Funciona sem internet. Nenhum dado é enviado a servidor algum.</p>
+      <button class="btn ghost danger block" data-act="wipe">${ic('trash')}Apagar todos os meus dados</button>
+      <p class="muted small" style="text-align:center">${ic('shield')} Funciona sem internet. Nenhum dado é enviado a servidor algum.</p>
     </div>`;
   }
 
   /* ---------- render ---------- */
   const views = { hoje: vHoje, fichas: vFichas, evolucao: vEvo, historico: vHist, perfil: vPerfil };
-  function render() {
-    const y = window.scrollY;
+  function render(anim) {
+    const y = window.scrollY, view = $('#view');
     document.querySelectorAll('#nav button').forEach(b => b.classList.toggle('on', b.dataset.tab === ui.tab));
-    $('#view').innerHTML = views[ui.tab]();
-    window.scrollTo(0, y);
+    view.classList.remove('enter');
+    view.innerHTML = views[ui.tab]();
+    if (anim) { void view.offsetWidth; view.classList.add('enter'); }
+    window.scrollTo(0, anim ? 0 : y);
     renderBanner();
     refreshList();
     syncWake();
@@ -516,7 +601,7 @@
     let h = '';
     if (storageFailed) h += `<div class="card banner"><b>Não consegui salvar.</b> <span class="muted small">Este navegador está bloqueando o armazenamento (aba privada?). Use uma aba normal ou exporte um backup.</span></div>`;
     else if (!S.active && ui.tab === 'hoje' && S.sessions.length >= 3 && Date.now() - S.settings.lastBackup > 14 * DAY)
-      h += `<div class="card banner stack"><div><b>Faça um backup</b><div class="muted small">${S.settings.lastBackup ? 'Faz mais de 2 semanas do último backup.' : 'Você ainda não exportou um backup.'} Seus dados só existem neste aparelho.</div></div><button class="btn sm" data-act="export">Exportar agora</button></div>`;
+      h += `<div class="card banner stack"><div><b>Faça um backup</b><div class="muted small">${S.settings.lastBackup ? 'Faz mais de 2 semanas do último backup.' : 'Você ainda não exportou um backup.'} Seus dados só existem neste aparelho.</div></div><button class="btn sm" data-act="export">${ic('download')}Exportar agora</button></div>`;
     $('#banner').innerHTML = h;
   }
   function refreshList() {
@@ -529,7 +614,7 @@
   /* ---------- descanso e tela ligada ---------- */
   function startRest(sec) {
     if (!sec) return;
-    rest = { end: Date.now() + sec * 1000, fired: false };
+    rest = { end: Date.now() + sec * 1000, total: sec, fired: false };
     drawRest();
   }
   function drawRest() {
@@ -547,10 +632,13 @@
     if (el.dataset.mode !== mode) {
       el.dataset.mode = mode;
       el.innerHTML = mode === 'run'
-        ? `<span>Descanso</span><span class="t"></span><button data-act="rest-add" data-s="-15">−15</button><button data-act="rest-add" data-s="15">+15</button><button data-act="rest-stop" aria-label="Fechar">✕</button>`
+        ? `${ic('clock')}<span class="t"></span><button data-act="rest-add" data-s="-15">−15</button><button data-act="rest-add" data-s="15">+15</button><button data-act="rest-stop" aria-label="Fechar">${ic('x')}</button><div class="rb"><i></i></div>`
         : `<span class="t">Bora! Descanso acabou</span><button data-act="rest-stop">OK</button>`;
     }
-    if (mode === 'run') $('.t', el).textContent = `${pad(Math.floor(left / 60))}:${pad(left % 60)}`;
+    if (mode === 'run') {
+      $('.t', el).textContent = `${pad(Math.floor(left / 60))}:${pad(left % 60)}`;
+      $('.rb i', el).style.width = Math.max(0, Math.min(100, (rest.end - Date.now()) / (rest.total * 10))) + '%';
+    }
   }
   setInterval(() => {
     if (rest) drawRest();
@@ -571,8 +659,8 @@
 
   /* ---------- ações ---------- */
   const A = {};
-  const go = tab => { ui.tab = tab; render(); window.scrollTo(0, 0); };
-  A.tab = d => { if (d.tab === 'fichas') ui.plan = null; if (d.tab === 'evolucao') ui.evo = null; go(d.tab); };
+  const go = tab => { ui.tab = tab; render(true); };
+  A.tab = d => { if (d.tab === ui.tab && !ui.plan && !ui.evo) { window.scrollTo({ top: 0, behavior: 'smooth' }); return; } if (d.tab === 'fichas') ui.plan = null; if (d.tab === 'evolucao') ui.evo = null; go(d.tab); };
 
   function newEntry(name, H) {
     const h = H.get(keyOf(name)), lst = h && last(h.items);
@@ -588,7 +676,7 @@
   };
   A.discard = async () => {
     if (!await ask('O que você registrou neste treino será perdido.', 'Descartar', 'Descartar treino?')) return;
-    S.active = null; rest = null; drawRest(); saveNow(); render();
+    S.active = null; rest = null; drawRest(); saveNow(); render(true);
   };
   A['add-ex'] = () => {
     const inp = $('#newEx'), n = cleanName(inp.value);
@@ -612,26 +700,31 @@
     const s = S.active.entries[+d.i].sets[+d.j];
     s.done = !s.done;
     el.closest('.set').classList.toggle('done', s.done);
-    if (s.done) startRest(S.settings.rest);
+    if (s.done) {
+      el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop');
+      startRest(S.settings.rest);
+    }
+    updateProgress();
     save();
   };
   A.finish = async () => {
     const a = S.active;
     const entries = a.entries.map(e => ({ name: e.name, sets: e.sets.filter(s => s.done && (s.kg > 0 || s.reps > 0)) })).filter(e => e.sets.length);
     if (!entries.length) {
-      if (await ask('Nenhuma série foi marcada com ✓. Descartar este treino?', 'Descartar')) { S.active = null; rest = null; drawRest(); saveNow(); render(); }
+      if (await ask('Nenhuma série foi marcada como feita. Descartar este treino?', 'Descartar')) { S.active = null; rest = null; drawRest(); saveNow(); render(true); }
       return;
     }
     const skipped = a.entries.reduce((n, e) => n + e.sets.filter(s => !s.done && s.kg > 0 && s.reps > 0).length, 0);
-    if (skipped && !await ask(`${skipped} série${skipped === 1 ? '' : 's'} preenchida${skipped === 1 ? '' : 's'} sem ✓ ${skipped === 1 ? 'ficará' : 'ficarão'} de fora do registro.`, 'Finalizar assim mesmo', 'Finalizar treino?')) return;
+    if (skipped && !await ask(`${skipped} série${plural(skipped, '', 's')} preenchida${plural(skipped, '', 's')} sem marcar ${plural(skipped, 'ficará', 'ficarão')} de fora do registro.`, 'Finalizar assim mesmo', 'Finalizar treino?')) return;
     const s = { id: a.id, date: a.date, start: a.start, end: Date.now(), planId: a.planId, planName: a.planName, entries, note: a.note };
-    S.sessions.push(s); S.active = null; rest = null; drawRest(); saveNow(); render();
+    S.sessions.push(s); S.active = null; rest = null; drawRest(); saveNow(); render(true);
     const prs = prEvents().filter(e => e.sid === s.id);
     const vol = sessVolume(s);
     modal({
       title: 'Treino salvo',
-      html: `<p class="muted">${fmtDur(s.end - s.start)} · ${entries.length} exercício${entries.length === 1 ? '' : 's'}${vol ? ` · ${fmt(vol)} kg de volume` : ''}</p>
-        ${prs.length ? `<div class="card hl mt"><span class="label">Novos recordes</span>${prs.map(e => `<div class="ex-line"><span>${esc(prText(e))}</span></div>`).join('')}</div>` : ''}`,
+      html: `${prs.length ? `<div class="trophy">${ic('award')}</div>` : ''}
+        <p class="muted">${fmtDur(s.end - s.start)} · ${entries.length} exercício${plural(entries.length, '', 's')}${vol ? ` · ${fmt(vol)} kg de volume` : ''}</p>
+        ${prs.length ? `<div class="card hl mt">${lbl('award', 'Novos recordes')}${prs.map(e => `<div class="ex-line"><span>${esc(prText(e))}</span></div>`).join('')}</div>` : ''}`,
       actions: [{ label: 'Fechar', value: true, cls: 'primary' }]
     });
   };
@@ -639,14 +732,14 @@
   /* fichas */
   A['plan-new'] = () => {
     const p = { id: uid(), name: S.plans.length < 26 ? `Treino ${String.fromCharCode(65 + S.plans.length)}` : 'Treino', exercises: [] };
-    S.plans.push(p); ui.plan = p.id; saveNow(); render();
+    S.plans.push(p); ui.plan = p.id; saveNow(); render(true);
   };
-  A['plan-edit'] = d => { ui.plan = d.id; render(); window.scrollTo(0, 0); };
-  A['plan-back'] = () => { ui.plan = null; render(); };
+  A['plan-edit'] = d => { ui.plan = d.id; render(true); };
+  A['plan-back'] = () => { ui.plan = null; render(true); };
   A['plan-del'] = async () => {
     const p = S.plans.find(x => x.id === ui.plan);
     if (!await ask(`Excluir a ficha “${p.name}”? Os treinos já feitos continuam no histórico.`, 'Excluir')) return;
-    S.plans = S.plans.filter(x => x.id !== p.id); ui.plan = null; saveNow(); render();
+    S.plans = S.plans.filter(x => x.id !== p.id); ui.plan = null; saveNow(); render(true);
   };
   A['plan-add-ex'] = () => {
     const p = S.plans.find(x => x.id === ui.plan), inp = $('#newEx'), n = cleanName(inp.value);
@@ -664,8 +757,8 @@
   A['plan-down'] = d => move(d, 1);
 
   /* evolução */
-  A['evo-open'] = d => { ui.evo = d.key; ui.evoSel = -1; ui.metric = 'kg'; render(); window.scrollTo(0, 0); };
-  A['evo-back'] = () => { ui.evo = null; render(); };
+  A['evo-open'] = d => { ui.evo = d.key; ui.evoSel = -1; ui.metric = 'kg'; render(true); };
+  A['evo-back'] = () => { ui.evo = null; render(true); };
   A['evo-metric'] = d => { ui.metric = d.m; ui.evoSel = -1; render(); };
   A['evo-point'] = d => { ui.evoSel = +d.i; render(); };
   A['wt-point'] = d => { ui.wSel = +d.i; render(); };
@@ -683,6 +776,7 @@
   };
 
   /* perfil */
+  A.theme = d => { S.settings.theme = d.v; saveNow(); applyTheme(); render(); };
   A['weight-add'] = () => {
     const kg = num($('#wkg').value), date = $('#wdt').value;
     if (!kg || kg > 500 || !isYmd(date)) return toast('Informe um peso válido');
@@ -695,7 +789,7 @@
     deferredInstall.prompt(); await deferredInstall.userChoice.catch(() => { });
     deferredInstall = null; render();
   };
-  A['rest-add'] = d => { if (rest) { rest.end += +d.s * 1000; rest.fired = false; drawRest(); } };
+  A['rest-add'] = d => { if (rest) { rest.end += +d.s * 1000; rest.total = Math.max(rest.total, (rest.end - Date.now()) / 1000); rest.fired = false; drawRest(); } };
   A['rest-stop'] = () => { rest = null; drawRest(); };
 
   A.export = async () => {
@@ -720,7 +814,7 @@
     let data;
     try { data = clean(JSON.parse(await file.text())); } catch (e) { return toast('Arquivo inválido'); }
     if (!data.sessions.length && !data.plans.length && !data.weights.length) return toast('Esse arquivo não tem dados de treino');
-    const info = `${data.sessions.length} treino${data.sessions.length === 1 ? '' : 's'}, ${data.plans.length} ficha${data.plans.length === 1 ? '' : 's'}, ${data.weights.length} registro${data.weights.length === 1 ? '' : 's'} de peso.`;
+    const info = `${data.sessions.length} treino${plural(data.sessions.length, '', 's')}, ${data.plans.length} ficha${plural(data.plans.length, '', 's')}, ${data.weights.length} registro${plural(data.weights.length, '', 's')} de peso.`;
     const v = await modal({
       title: 'Importar backup', html: `<p class="muted">O arquivo tem ${esc(info)}</p>`,
       actions: [{ label: 'Mesclar com o que já tenho', value: 'merge', cls: 'primary' }, { label: 'Substituir tudo', value: 'replace', cls: 'danger' }, { label: 'Cancelar', value: null, cls: 'ghost' }]
@@ -733,17 +827,18 @@
       const w = new Map(data.weights.map(x => [x.date, x])); S.weights.forEach(x => w.set(x.date, x)); S.weights = [...w.values()];
       if (!S.settings.name) S.settings.name = data.settings.name;
     } else return;
-    saveNow(); render(); toast('Backup importado');
+    saveNow(); applyTheme(); render(true); toast('Backup importado');
   }
   A.wipe = async () => {
     if (!await ask('Isso apaga treinos, fichas e peso deste aparelho. Não dá para desfazer (a não ser por um backup).', 'Apagar tudo', 'Apagar tudo?')) return;
-    S = blank(); rest = null; drawRest(); saveNow(); ui.plan = ui.evo = ui.day = ui.open = null; render(); toast('Dados apagados');
+    S = blank(); rest = null; drawRest(); saveNow(); applyTheme(); ui.plan = ui.evo = ui.day = ui.open = null; render(true); toast('Dados apagados');
   };
   A['share-summary'] = async () => {
     const since = Date.now() - 30 * DAY;
     const ss = S.sessions.filter(s => s.start >= since);
     const prs = prEvents().filter(e => e.start >= since).slice(0, 6);
-    const lines = [`Meus treinos (últimos 30 dias)`, `• ${ss.length} treino${ss.length === 1 ? '' : 's'}`, `• ${weekStreak()} semana${weekStreak() === 1 ? '' : 's'} seguida${weekStreak() === 1 ? '' : 's'}`];
+    const wk = weekStreak();
+    const lines = ['Meus treinos (últimos 30 dias)', `• ${ss.length} treino${plural(ss.length, '', 's')}`, `• ${wk} semana${plural(wk, '', 's')} seguida${plural(wk, '', 's')}`];
     if (prs.length) { lines.push('', 'Recordes:'); prs.forEach(e => lines.push('• ' + prText(e))); }
     const text = lines.join('\n');
     try {
@@ -791,5 +886,6 @@
   /* ---------- início ---------- */
   try { navigator.storage && navigator.storage.persist && navigator.storage.persist(); } catch (e) { }
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => { });
-  render();
+  applyTheme();
+  render(true);
 })();
