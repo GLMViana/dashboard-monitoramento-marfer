@@ -1,0 +1,21 @@
+{
+  "name": "chat-privado",
+  "version": "1.0.0",
+  "description": "Chat de texto, voz e compartilhamento de tela para um grupo privado",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server/index.js",
+    "add-user": "node scripts/add-user.js",
+    "test": "node --test"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "livekit-client": "2.23.0",
+    "ws": "8.22.1"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=22.9"
+  },
+  "private": true
+}

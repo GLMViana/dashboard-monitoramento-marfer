@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Canal privado</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <section id="login" class="screen" hidden>
+    <form id="login-form" class="card">
+      <h1>Entrar</h1>
+      <label>Seu nome <input name="name" autocomplete="username" required maxlength="20"></label>
+      <button type="submit">Entrar</button>
+      <p id="login-error" class="error" role="alert"></p>
+    </form>
+  </section>
+
+  <section id="app" class="app" hidden>
+    <aside class="sidebar">
+      <div class="me">
+        <span id="me-name"></span>
+        <button id="logout" class="link" type="button">sair</button>
+      </div>
+      <h2>Texto</h2>
+      <ul id="text-channels" class="channels"></ul>
+      <h2>Voz</h2>
+      <ul id="voice-channels" class="channels"></ul>
+      <div id="voice-panel" class="voice-panel" hidden>
+        <span class="ok">● Conectado em voz</span>
+        <span id="voice-panel-channel" class="muted"></span>
+        <button id="panel-leave" class="danger" type="button">Sair da chamada</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <strong id="channel-title"></strong>
+        <span id="status" class="muted"></span>
+        <button id="back-to-voice" type="button" hidden>Voltar para a chamada</button>
+      </header>
+
+      <section id="text-view" class="view">
+        <div id="messages" class="messages" aria-live="polite"></div>
+        <form id="composer" class="composer">
+          <input id="message-input" maxlength="2000" placeholder="Escreve uma mensagem" autocomplete="off">
+          <button type="submit">Enviar</button>
+        </form>
+      </section>
+
+      <section id="voice-view" class="view" hidden>
+        <div id="stage" class="stage"></div>
+        <div id="audio-sink" hidden></div>
+        <div class="controls">
+          <button id="btn-mic" type="button">Microfone</button>
+          <button id="btn-cam" type="button">Câmera</button>
+          <label class="inline">Qualidade
+            <select id="quality"></select>
+          </label>
+          <label class="inline"><input id="share-audio" type="checkbox"> Áudio da tela</label>
+          <button id="btn-share" type="button">Compartilhar tela</button>
+          <button id="btn-leave" type="button" class="danger">Sair da chamada</button>
+        </div>
+        <p id="voice-msg" class="muted" role="status"></p>
+      </section>
+    </main>
+  </section>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
