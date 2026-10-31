@@ -83,11 +83,10 @@ async function login(form) {
   try {
     const { token } = await api('/api/login', {
       method: 'POST',
-      body: { name: form.name.value, password: form.password.value },
+      body: { name: form.name.value },
     });
     state.token = token;
     storage('set', token);
-    form.password.value = '';
     await boot();
   } catch (err) {
     $('login-error').textContent = err.message;

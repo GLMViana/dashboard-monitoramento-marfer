@@ -10,7 +10,7 @@ Feito para ser leve: sem framework no navegador, sem Electron, vídeo só quando
 - Compartilhamento de tela com presets de 720p até 4K, até 60 fps, e áudio da aba ou do sistema.
 - Até 3 transmissões de tela ao mesmo tempo.
 - Qualidade adaptativa: se a conexão cair, a transmissão baixa a qualidade sozinha e volta quando melhora.
-- Login com senha (scrypt), sessão assinada e limite de tentativas.
+- Login só com o nome: entra quem estiver liberado em `config/users.json`. Sessão assinada e limite de tentativas.
 
 ## Como funciona
 
@@ -49,11 +49,11 @@ cd deploy
 docker compose up -d
 ```
 
-Crie os usuários (um comando por pessoa):
+Libere os nomes que podem entrar (um comando por pessoa, sem senha):
 
 ```bash
-npm run add-user -- guilherme "uma-senha-com-8-ou-mais"
-npm run add-user -- amigo2 "outra-senha-boa"
+npm run add-user -- guilherme
+npm run add-user -- amigo2
 ```
 
 Suba o app:
@@ -62,7 +62,7 @@ Suba o app:
 npm start
 ```
 
-Coloque o `Caddyfile` de `deploy/` na frente, trocando os domínios. Depois, cada pessoa abre o endereço no navegador e entra com o nome e a senha.
+Coloque o `Caddyfile` de `deploy/` na frente, trocando os domínios. Depois, cada pessoa abre o endereço no navegador e digita o nome liberado.
 
 ## Canais
 

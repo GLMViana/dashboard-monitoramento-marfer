@@ -1,24 +1,19 @@
-// Uso: npm run add-user -- <nome> <senha>
-// Grava o usuário em config/users.json com a senha já em hash (scrypt).
+// Uso: npm run add-user -- <nome>
+// Libera um nome para entrar no app (sem senha). Grava em config/users.json.
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { hashPassword } from '../server/auth.js';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const file = join(ROOT, 'config', 'users.json');
-const [name, password] = process.argv.slice(2);
+const [name] = process.argv.slice(2);
 
-if (!name || !password) {
-  console.error('Uso: npm run add-user -- <nome> <senha>');
+if (!name) {
+  console.error('Uso: npm run add-user -- <nome>');
   process.exit(1);
 }
 if (!/^[a-z0-9_-]{2,20}$/.test(name)) {
   console.error('Nome: use de 2 a 20 caracteres, só letras minúsculas, números, _ e -.');
-  process.exit(1);
-}
-if (password.length < 8) {
-  console.error('Senha: mínimo de 8 caracteres.');
   process.exit(1);
 }
 
@@ -29,10 +24,10 @@ try {
   if (err.code !== 'ENOENT') throw err;
 }
 if (users.some((u) => u.name === name)) {
-  console.error(`Já existe um usuário "${name}". Apague a entrada em config/users.json antes de recriar.`);
+  console.error(`O nome "${name}" já está liberado.`);
   process.exit(1);
 }
-users.push({ name, passwordHash: hashPassword(password) });
+users.push({ name });
 await mkdir(dirname(file), { recursive: true });
 await writeFile(file, JSON.stringify(users, null, 2) + '\n');
-console.log(`Usuário "${name}" criado.`);
+console.log(`Nome "${name}" liberado para entrar.`);

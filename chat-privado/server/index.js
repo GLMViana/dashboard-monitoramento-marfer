@@ -4,10 +4,7 @@ import { randomBytes, randomUUID } from 'node:crypto';
 import { join, extname, resolve, sep, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { WebSocketServer } from 'ws';
-import { createSession, readSession, verifyPassword, hashPassword, createRateLimiter } from './auth.js';
-
-// Hash fictício: comparado quando o usuário não existe, para o tempo de resposta não revelar nomes válidos.
-const DUMMY_HASH = hashPassword('dummy-password-never-used');
+import { createSession, readSession, createRateLimiter } from './auth.js';
 import { createLiveKitToken } from './livekit.js';
 import { createMessageStore } from './store.js';
 
@@ -125,10 +122,8 @@ export function createApp(config, { store = createMessageStore(join(config.dataD
       const body = await readBody(req);
       const name = String(body.name ?? '').trim().toLowerCase();
       const users = await loadUsers(config.configDir);
-      const user = users.find((u) => u.name === name);
-      // Verifica a senha mesmo se o usuário não existir, para não revelar quem existe pelo tempo de resposta.
-      const ok = verifyPassword(String(body.password ?? ''), user?.passwordHash ?? DUMMY_HASH);
-      if (!user || !ok) return send(res, 401, { error: 'Nome ou senha incorretos.' });
+      // Sem senha: entra quem estiver na lista de config/users.json.
+      if (!users.some((u) => u.name === name)) return send(res, 401, { error: 'Esse nome não está liberado.' });
       loginLimiter.reset(ip);
       return send(res, 200, { token: createSession(name, config.sessionSecret, SESSION_TTL_MS), name });
     }

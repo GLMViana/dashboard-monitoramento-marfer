@@ -26,10 +26,7 @@ before(async () => {
   dir = await mkdtemp(join(tmpdir(), 'canal-test-'));
   await writeFile(
     join(dir, 'users.json'),
-    JSON.stringify([
-      { name: 'ana', passwordHash: hashPassword('senha-da-ana-123') },
-      { name: 'bia', passwordHash: hashPassword('senha-da-bia-123') },
-    ]),
+    JSON.stringify([{ name: 'ana' }, { name: 'bia' }]),
   );
   await writeFile(join(dir, 'channels.json'), JSON.stringify({ text: ['geral'], voice: ['Voz geral'] }));
   const config = { ...cfg, configDir: dir, dataDir: join(dir, 'data'), port: 0 };
@@ -45,11 +42,11 @@ after(async () => {
   if (dir) await rm(dir, { recursive: true, force: true });
 });
 
-async function login(name = 'ana', password = 'senha-da-ana-123') {
+async function login(name = 'ana') {
   const res = await fetch(`${base}/api/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, password }),
+    body: JSON.stringify({ name }),
   });
   return { status: res.status, body: await res.json() };
 }
@@ -92,15 +89,14 @@ test('token do LiveKit tem assinatura HS256 verificável e grant da sala', () =>
   assert.ok(claims.exp > claims.nbf);
 });
 
-test('login: senha errada e usuário inexistente retornam 401 iguais', async () => {
-  const a = await login('ana', 'errada-errada');
-  const b = await login('ninguem', 'qualquer-coisa');
-  assert.equal(a.status, 401);
-  assert.equal(b.status, 401);
-  assert.equal(a.body.error, b.body.error);
+test('login: nome fora da lista é recusado', async () => {
+  const recusado = await login('ninguem');
+  assert.equal(recusado.status, 401);
+  const aceito = await login('ana');
+  assert.equal(aceito.status, 200);
 });
 
-test('login correto devolve token que abre a configuração', async () => {
+test('login com nome liberado devolve token que abre a configuração', async () => {
   const { status, body } = await login();
   assert.equal(status, 200);
   assert.equal(body.name, 'ana');
@@ -236,7 +232,7 @@ test('CSP usa a origem exata do LiveKit (wss em produção, ws em desenvolviment
 
 test('presença: entrada, mudo e saída de sala de voz são avisados aos outros', async () => {
   const wsA = await openWs((await login()).body.token);
-  const wsB = await openWs((await login('bia', 'senha-da-bia-123')).body.token);
+  const wsB = await openWs((await login('bia')).body.token);
   const inRoom = (m) => m.type === 'voice' && (m.rooms['Voz geral'] || []).some((p) => p.name === 'ana');
 
   const joined = nextMessage(wsB, inRoom);
@@ -257,7 +253,7 @@ test('presença: entrada, mudo e saída de sala de voz são avisados aos outros'
 
 test('presença: fechar a aba tira a pessoa da sala', async () => {
   const wsA = await openWs((await login()).body.token);
-  const wsB = await openWs((await login('bia', 'senha-da-bia-123')).body.token);
+  const wsB = await openWs((await login('bia')).body.token);
   const joined = nextMessage(wsB, (x) => x.type === 'voice' && (x.rooms['Voz geral'] || []).some((p) => p.name === 'ana'));
   wsA.send(JSON.stringify({ type: 'voice-join', room: 'Voz geral', muted: false, sharing: false }));
   await joined;
