@@ -1,0 +1,10 @@
+# LiveKit: servidor de voz e vídeo (SFU). Roda no VPS ou no PC de casa.
+# Portas UDP 50000-60000 precisam estar liberadas no firewall e no roteador.
+services:
+  livekit:
+    image: livekit/livekit-server:latest
+    command: --config /etc/livekit.yaml
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./livekit.yaml:/etc/livekit.yaml:ro

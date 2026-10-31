@@ -1,0 +1,12 @@
+# Troque a chave e o segredo: devem ser iguais ao LIVEKIT_API_KEY / LIVEKIT_API_SECRET do app.
+port: 7880
+rtc:
+  tcp_port: 7881
+  port_range_start: 50000
+  port_range_end: 60000
+  use_external_ip: true
+keys:
+  troque-esta-chave: troque-este-segredo-com-32-caracteres-ou-mais
+# TURN desativado. Ative (com domínio e certificado) só se alguém não conseguir conectar em rede restrita.
+turn:
+  enabled: false

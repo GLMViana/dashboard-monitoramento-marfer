@@ -1,0 +1,8 @@
+# HTTPS automático. Captura de tela do navegador só funciona em HTTPS (ou localhost).
+canal.seudominio.com {
+  reverse_proxy localhost:3000
+}
+
+livekit.seudominio.com {
+  reverse_proxy localhost:7880
+}
