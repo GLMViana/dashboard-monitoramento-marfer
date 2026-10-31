@@ -8,6 +8,7 @@ import {
   applyDegradation,
   countActiveShares,
 } from '/quality.js';
+import { sounds } from '/sounds.js';
 
 const $ = (id) => document.getElementById(id);
 const TOKEN_KEY = 'canal-token';
@@ -18,6 +19,7 @@ const state = {
   me: null,
   channels: { text: [], voice: [] },
   livekitUrl: null,
+  presence: {}, // sala de voz -> [{ name, muted, sharing }], vindo do servidor
   textChannel: null,
   unread: new Map(),
   messages: [],
@@ -34,7 +36,7 @@ const state = {
   quality: null,
   qualitySince: Date.now(),
   autoDegrade: true,
-  elements: new Map(), // sid -> elemento de mídia (reaproveitado entre renderizações)
+  elements: new Map(), // sid -> { track, el }, reaproveitado entre renderizações
 };
 
 // ---------- utilidades ----------
@@ -60,6 +62,10 @@ async function api(path, { method = 'GET', body } = {}) {
     throw new Error(data.error || `Erro ${res.status}`);
   }
   return data;
+}
+
+function wsSend(obj) {
+  if (state.ws?.readyState === WebSocket.OPEN) state.ws.send(JSON.stringify(obj));
 }
 
 function setStatus(text) {
@@ -131,6 +137,7 @@ function renderChannels() {
     li.append(btn);
     textList.append(li);
   }
+
   for (const name of state.channels.voice) {
     const li = document.createElement('li');
     const btn = document.createElement('button');
@@ -139,6 +146,21 @@ function renderChannels() {
     btn.textContent = `🔊 ${name}`;
     btn.addEventListener('click', () => joinVoice(name));
     li.append(btn);
+
+    const people = state.presence[name] || [];
+    if (people.length) {
+      const ul = document.createElement('ul');
+      ul.className = 'people';
+      for (const p of people) {
+        const item = document.createElement('li');
+        item.textContent = p.name === state.me ? `${p.name} (você)` : p.name;
+        if (p.name === state.me) item.classList.add('me');
+        if (p.sharing) item.textContent += ' · 🖥';
+        if (p.muted) item.textContent += ' · 🔇';
+        ul.append(item);
+      }
+      li.append(ul);
+    }
     voiceList.append(li);
   }
   markActive();
@@ -158,7 +180,9 @@ function markActive() {
     }
   }
   for (const btn of document.querySelectorAll('[data-voice]')) {
-    btn.classList.toggle('active', state.view === 'voice' && btn.dataset.voice === state.voiceChannel);
+    const name = btn.dataset.voice;
+    btn.classList.toggle('active', state.view === 'voice' && name === state.voiceChannel);
+    btn.classList.toggle('connected', !!state.room && name === state.voiceChannel);
   }
   $('back-to-voice').hidden = !(state.room && state.view === 'text');
 }
@@ -183,7 +207,7 @@ function selectText(name) {
   $('message-input').focus();
 }
 
-// ---------- chat de texto ----------
+// ---------- chat de texto e presença ----------
 
 function connectChat() {
   if (state.ws) return;
@@ -194,6 +218,8 @@ function connectChat() {
     state.wsRetry = 1000;
     setStatus('');
     requestHistory();
+    // se a conexão caiu durante a chamada, avisa o servidor de novo
+    if (state.room) sendVoiceJoin();
   };
   ws.onmessage = (ev) => onChatMessage(JSON.parse(ev.data));
   ws.onclose = () => {
@@ -206,12 +232,15 @@ function connectChat() {
 }
 
 function requestHistory() {
-  if (state.ws?.readyState === WebSocket.OPEN && state.textChannel) {
-    state.ws.send(JSON.stringify({ type: 'history', channel: state.textChannel }));
-  }
+  if (state.textChannel) wsSend({ type: 'history', channel: state.textChannel });
 }
 
 function onChatMessage(msg) {
+  if (msg.type === 'voice') {
+    state.presence = msg.rooms;
+    renderChannels();
+    return;
+  }
   if (msg.type === 'history') {
     if (msg.channel !== state.textChannel) return;
     state.messages = msg.messages;
@@ -269,6 +298,22 @@ function fillQualityOptions() {
   }
 }
 
+function micOn() {
+  return !!state.room?.localParticipant.isMicrophoneEnabled;
+}
+
+function isSharing() {
+  return !!state.room?.localParticipant.getTrackPublication(Track.Source.ScreenShare)?.track;
+}
+
+function sendVoiceJoin() {
+  wsSend({ type: 'voice-join', room: state.voiceChannel, muted: !micOn(), sharing: isSharing() });
+}
+
+function sendVoiceState() {
+  if (state.room) wsSend({ type: 'voice-state', muted: !micOn(), sharing: isSharing() });
+}
+
 async function joinVoice(name) {
   if (state.room) await leaveVoice();
   setVoiceMsg('Conectando...');
@@ -284,15 +329,17 @@ async function joinVoice(name) {
     state.voiceChannel = name;
     bindRoomEvents(room);
     await room.connect(url || state.livekitUrl, token);
-    showView('voice');
-    renderVoice();
     try {
       await room.localParticipant.setMicrophoneEnabled(true);
-      setVoiceMsg('');
     } catch {
       setVoiceMsg('Sem acesso ao microfone. Você entrou só para ouvir.');
     }
+    showView('voice');
+    renderVoice();
     updateControls();
+    sendVoiceJoin();
+    sounds.join();
+    if (!$('voice-msg').textContent.startsWith('Sem acesso')) setVoiceMsg('');
   } catch (err) {
     await leaveVoice();
     setVoiceMsg(`Não consegui entrar: ${err.message}`);
@@ -305,8 +352,14 @@ function bindRoomEvents(room) {
     updateControls();
   };
   room
-    .on(RoomEvent.ParticipantConnected, rerender)
-    .on(RoomEvent.ParticipantDisconnected, rerender)
+    .on(RoomEvent.ParticipantConnected, () => {
+      sounds.peerJoin();
+      rerender();
+    })
+    .on(RoomEvent.ParticipantDisconnected, () => {
+      sounds.peerLeave();
+      rerender();
+    })
     .on(RoomEvent.TrackSubscribed, rerender)
     .on(RoomEvent.TrackUnsubscribed, rerender)
     .on(RoomEvent.TrackPublished, rerender)
@@ -316,6 +369,7 @@ function bindRoomEvents(room) {
     .on(RoomEvent.ActiveSpeakersChanged, updateSpeaking)
     .on(RoomEvent.ConnectionQualityChanged, onConnectionQuality)
     .on(RoomEvent.Disconnected, () => {
+      wsSend({ type: 'voice-leave' });
       cleanupVoice();
       setVoiceMsg('Você saiu da chamada.');
     });
@@ -336,6 +390,7 @@ function onLocalShareChange(pub) {
   }
   renderVoice();
   updateControls();
+  sendVoiceState();
 }
 
 // Renderiza só o que muda: vídeos e áudios são reaproveitados pelo id da faixa.
@@ -365,7 +420,7 @@ function renderVoice() {
       if (source === Track.Source.ScreenShare) tile.classList.add('screen');
       const el = pubElement(pub.track, p.isLocal);
       wanted.add(pub.trackSid);
-      if (!el.isConnected || el.parentElement !== tile) tile.append(el);
+      if (el.parentElement !== tile) tile.append(el);
       hasVideo = true;
       if (source === Track.Source.ScreenShare) break;
     }
@@ -378,7 +433,7 @@ function renderVoice() {
     tile.append(label);
     tiles.push(tile);
 
-    // Áudio dos outros participantes (o seu não é reproduzido para evitar eco).
+    // Áudio dos outros participantes (o seu não é reproduzido, para evitar eco).
     for (const source of [Track.Source.Microphone, Track.Source.ScreenShareAudio]) {
       const pub = p.getTrackPublication(source);
       if (!pub?.track || p.isLocal) continue;
@@ -388,7 +443,7 @@ function renderVoice() {
     }
   }
 
-  // Ordena: transmissão de tela primeiro.
+  // Transmissão de tela primeiro.
   tiles.sort((a, b) => Number(b.classList.contains('screen')) - Number(a.classList.contains('screen')));
   stage.replaceChildren(...tiles);
   updateSpeaking();
@@ -433,17 +488,16 @@ function updateSpeaking() {
 function updateControls() {
   const r = state.room;
   const inVoice = !!r;
-  $('btn-mic').textContent = r?.localParticipant.isMicrophoneEnabled ? 'Microfone ligado' : 'Microfone desligado';
-  $('btn-mic').setAttribute('aria-pressed', String(!!r?.localParticipant.isMicrophoneEnabled));
-  $('btn-cam').textContent = r?.localParticipant.isCameraEnabled ? 'Câmera ligada' : 'Câmera desligada';
-  $('btn-cam').setAttribute('aria-pressed', String(!!r?.localParticipant.isCameraEnabled));
-  const sharing = !!r?.localParticipant.getTrackPublication(Track.Source.ScreenShare)?.track;
-  $('btn-share').textContent = sharing ? 'Parar de compartilhar' : 'Compartilhar tela';
-  $('btn-share').setAttribute('aria-pressed', String(sharing));
-  $('btn-leave').disabled = !inVoice;
-  $('btn-mic').disabled = !inVoice;
-  $('btn-cam').disabled = !inVoice;
-  $('btn-share').disabled = !inVoice;
+  const lp = r?.localParticipant;
+  $('btn-mic').textContent = micOn() ? 'Microfone ligado' : 'Microfone desligado';
+  $('btn-mic').setAttribute('aria-pressed', String(micOn()));
+  $('btn-cam').textContent = lp?.isCameraEnabled ? 'Câmera ligada' : 'Câmera desligada';
+  $('btn-cam').setAttribute('aria-pressed', String(!!lp?.isCameraEnabled));
+  $('btn-share').textContent = isSharing() ? 'Parar de compartilhar' : 'Compartilhar tela';
+  $('btn-share').setAttribute('aria-pressed', String(isSharing()));
+  for (const id of ['btn-leave', 'btn-mic', 'btn-cam', 'btn-share']) $(id).disabled = !inVoice;
+  $('voice-panel').hidden = !inVoice;
+  $('voice-panel-channel').textContent = inVoice ? state.voiceChannel : '';
   markActive();
 }
 
@@ -457,6 +511,7 @@ async function toggleMic() {
   }
   updateControls();
   renderVoice();
+  sendVoiceState();
 }
 
 async function toggleCam() {
@@ -474,8 +529,7 @@ async function toggleCam() {
 async function toggleShare() {
   const lp = state.room?.localParticipant;
   if (!lp) return;
-  const current = lp.getTrackPublication(Track.Source.ScreenShare);
-  if (current?.track) {
+  if (isSharing()) {
     await lp.setScreenShareEnabled(false);
     return;
   }
@@ -555,6 +609,8 @@ function cleanupVoice() {
 async function leaveVoice() {
   const r = state.room;
   if (!r) return;
+  sounds.leave();
+  wsSend({ type: 'voice-leave' });
   cleanupVoice();
   await r.disconnect().catch(() => {});
 }
@@ -578,6 +634,7 @@ $('btn-mic').addEventListener('click', toggleMic);
 $('btn-cam').addEventListener('click', toggleCam);
 $('btn-share').addEventListener('click', toggleShare);
 $('btn-leave').addEventListener('click', leaveVoice);
+$('panel-leave').addEventListener('click', leaveVoice);
 $('back-to-voice').addEventListener('click', () => showView('voice'));
 $('quality').addEventListener('change', () => setVoiceMsg('A nova qualidade vale na próxima transmissão.'));
 

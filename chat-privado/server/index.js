@@ -199,6 +199,33 @@ export function createApp(config, { store = createMessageStore(join(config.dataD
   const wss = new WebSocketServer({ noServer: true, maxPayload: 16 * 1024 });
   const clients = new Set();
 
+  // ---- Presença nas salas de voz: quem está em cada canal ----
+  const voiceRooms = new Map(); // nome da sala -> Set de conexões
+  const voicePresence = () => {
+    const rooms = {};
+    for (const [room, members] of voiceRooms) {
+      rooms[room] = [...members].map((ws) => ({
+        name: ws.user,
+        muted: ws.voiceMuted,
+        sharing: ws.voiceSharing,
+      }));
+    }
+    return { type: 'voice', rooms };
+  };
+  const broadcastVoice = () => {
+    const payload = JSON.stringify(voicePresence());
+    for (const c of clients) if (c.readyState === 1) c.send(payload);
+  };
+  function leaveVoiceRoom(ws) {
+    if (!ws.voiceRoom) return;
+    const members = voiceRooms.get(ws.voiceRoom);
+    if (members) {
+      members.delete(ws);
+      if (members.size === 0) voiceRooms.delete(ws.voiceRoom);
+    }
+    ws.voiceRoom = null;
+  }
+
   server.on('upgrade', async (req, socket, head) => {
     const url = new URL(req.url, 'http://localhost');
     const user = url.pathname === '/ws' ? readSession(url.searchParams.get('token'), config.sessionSecret) : null;
@@ -211,8 +238,15 @@ export function createApp(config, { store = createMessageStore(join(config.dataD
       ws.alive = true;
       ws.sent = [];
       clients.add(ws);
+      ws.send(JSON.stringify(voicePresence()));
       ws.on('pong', () => (ws.alive = true));
-      ws.on('close', () => clients.delete(ws));
+      ws.on('close', () => {
+        clients.delete(ws);
+        if (ws.voiceRoom) {
+          leaveVoiceRoom(ws);
+          broadcastVoice();
+        }
+      });
       ws.on('message', (raw) => {
         onWsMessage(ws, raw).catch((err) => console.error('erro no chat:', err.message));
       });
@@ -231,6 +265,28 @@ export function createApp(config, { store = createMessageStore(join(config.dataD
       if (!channels.text.includes(msg.channel)) return;
       const messages = await store.recent(msg.channel);
       return ws.send(JSON.stringify({ type: 'history', channel: msg.channel, messages }));
+    }
+    if (msg.type === 'voice-join') {
+      if (!channels.voice.includes(msg.room)) return;
+      if (ws.voiceRoom !== msg.room) {
+        leaveVoiceRoom(ws);
+        ws.voiceRoom = msg.room;
+        if (!voiceRooms.has(msg.room)) voiceRooms.set(msg.room, new Set());
+        voiceRooms.get(msg.room).add(ws);
+      }
+      ws.voiceMuted = !!msg.muted;
+      ws.voiceSharing = !!msg.sharing;
+      return broadcastVoice();
+    }
+    if (msg.type === 'voice-state') {
+      if (!ws.voiceRoom) return;
+      ws.voiceMuted = !!msg.muted;
+      ws.voiceSharing = !!msg.sharing;
+      return broadcastVoice();
+    }
+    if (msg.type === 'voice-leave') {
+      leaveVoiceRoom(ws);
+      return broadcastVoice();
     }
     if (msg.type === 'send') {
       const text = String(msg.text ?? '').trim();

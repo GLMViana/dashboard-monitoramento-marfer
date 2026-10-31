@@ -26,7 +26,10 @@ before(async () => {
   dir = await mkdtemp(join(tmpdir(), 'canal-test-'));
   await writeFile(
     join(dir, 'users.json'),
-    JSON.stringify([{ name: 'ana', passwordHash: hashPassword('senha-da-ana-123') }]),
+    JSON.stringify([
+      { name: 'ana', passwordHash: hashPassword('senha-da-ana-123') },
+      { name: 'bia', passwordHash: hashPassword('senha-da-bia-123') },
+    ]),
   );
   await writeFile(join(dir, 'channels.json'), JSON.stringify({ text: ['geral'], voice: ['Voz geral'] }));
   const config = { ...cfg, configDir: dir, dataDir: join(dir, 'data'), port: 0 };
@@ -229,4 +232,37 @@ test('CSP usa a origem exata do LiveKit (wss em produção, ws em desenvolviment
   const dev = securityHeaders('ws://localhost:7880')['Content-Security-Policy'];
   assert.match(dev, /connect-src 'self' ws:\/\/localhost:7880 http:\/\/localhost:7880/);
   assert.doesNotMatch(prod, /connect-src[^;]*\bhttps:(?!\/\/livekit)/);
+});
+
+test('presença: entrada, mudo e saída de sala de voz são avisados aos outros', async () => {
+  const wsA = await openWs((await login()).body.token);
+  const wsB = await openWs((await login('bia', 'senha-da-bia-123')).body.token);
+  const inRoom = (m) => m.type === 'voice' && (m.rooms['Voz geral'] || []).some((p) => p.name === 'ana');
+
+  const joined = nextMessage(wsB, inRoom);
+  wsA.send(JSON.stringify({ type: 'voice-join', room: 'Voz geral', muted: true, sharing: false }));
+  const m = await joined;
+  assert.equal(m.rooms['Voz geral'].find((p) => p.name === 'ana').muted, true);
+
+  const unmuted = nextMessage(wsB, (x) => inRoom(x) && x.rooms['Voz geral'].find((p) => p.name === 'ana').muted === false);
+  wsA.send(JSON.stringify({ type: 'voice-state', muted: false, sharing: false }));
+  await unmuted;
+
+  const left = nextMessage(wsB, (x) => x.type === 'voice' && !x.rooms['Voz geral']);
+  wsA.send(JSON.stringify({ type: 'voice-leave' }));
+  await left;
+  wsB.close();
+  wsA.close();
+});
+
+test('presença: fechar a aba tira a pessoa da sala', async () => {
+  const wsA = await openWs((await login()).body.token);
+  const wsB = await openWs((await login('bia', 'senha-da-bia-123')).body.token);
+  const joined = nextMessage(wsB, (x) => x.type === 'voice' && (x.rooms['Voz geral'] || []).some((p) => p.name === 'ana'));
+  wsA.send(JSON.stringify({ type: 'voice-join', room: 'Voz geral', muted: false, sharing: false }));
+  await joined;
+  const gone = nextMessage(wsB, (x) => x.type === 'voice' && !x.rooms['Voz geral']);
+  wsA.close();
+  await gone;
+  wsB.close();
 });

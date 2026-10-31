@@ -36,7 +36,7 @@ input:focus, select:focus, button:focus-visible { outline: 2px solid var(--accen
 .card button { background: var(--accent); color: #fff; }
 
 .app { height: 100%; display: grid; grid-template-columns: 220px 1fr; }
-.sidebar { background: var(--panel); padding: 12px; overflow-y: auto; }
+.sidebar { background: var(--panel); padding: 12px; overflow-y: auto; display: flex; flex-direction: column; }
 .sidebar h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 14px 4px 6px; }
 .me { display: flex; justify-content: space-between; align-items: center; padding: 4px; font-weight: 600; }
 .channels { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
@@ -76,3 +76,12 @@ input:focus, select:focus, button:focus-visible { outline: 2px solid var(--accen
   .channels { display: flex; flex-wrap: wrap; gap: 4px; }
   .channels button { width: auto; }
 }
+
+/* canal de voz: quem está conectado e em qual canal você está */
+.channels button.connected { color: var(--ok); }
+.channels button.connected::before { content: "● "; }
+.people { list-style: none; margin: 2px 0 6px 22px; padding: 0; display: grid; gap: 2px; font-size: 13px; color: var(--muted); }
+.people li { overflow-wrap: anywhere; }
+.people li.me { color: var(--text); }
+.voice-panel { margin-top: auto; border-top: 1px solid var(--panel-2); padding: 10px 4px 4px; display: grid; gap: 4px; }
+.voice-panel .ok { color: var(--ok); font-weight: 600; }
