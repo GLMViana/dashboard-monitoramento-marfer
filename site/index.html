@@ -6,7 +6,7 @@
 <!-- INICIO-ARTEFATO -->
 <title>Marfer Transportes</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Marfer Transportes: mais de 30 anos de transporte rodoviário com frota própria. Seminovos com procedência garantida.">
+<meta name="description" content="Marfer Transportes: mais de 15 anos de transporte rodoviário com frota própria. Seminovos com procedência garantida.">
 <link rel="icon" type="image/png" href="img/icone.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -155,17 +155,15 @@ p{text-wrap:pretty}
 .painel-num{display:flex;align-items:baseline;gap:12px;margin:14px 0 4px}
 .painel-num strong{font-family:var(--f-titulo);font-size:76px;font-weight:800;line-height:.9;color:var(--sobre)}
 .painel-num span{font-size:17px;color:var(--sobre-2);line-height:1.25}
-.painel-slogan{margin:0 0 18px;font-size:15px;color:var(--sobre-2)}
+.painel-status{margin:0 0 20px;font-size:14.5px;color:var(--sobre-2)}
 .painel-tipos{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:10px}
 .painel-tipos li{display:grid;grid-template-columns:104px minmax(0,1fr) 28px;align-items:center;gap:10px;font-size:14.5px}
 .painel-tipos .barra{height:8px;border-radius:4px;background:rgba(255,255,255,.1);overflow:hidden}
 .painel-tipos .barra i{display:block;height:100%;border-radius:4px;background:var(--azul)}
 .painel-tipos b{font-variant-numeric:tabular-nums;text-align:right}
-.painel-preco{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-top:16px;border-top:1px solid var(--sobre-linha);margin-bottom:18px}
+.painel-preco{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-top:16px;border-top:1px solid var(--sobre-linha)}
 .painel-preco span{color:var(--sobre-2);font-size:14.5px}
 .painel-preco strong{font-family:var(--f-titulo);font-size:28px;font-weight:700}
-.painel .btn{width:100%}
-.painel small{display:block;margin-top:12px;color:var(--sobre-2);font-size:12.5px;text-align:center}
 @media (max-width:900px){.hero-grade{grid-template-columns:1fr;gap:36px}.painel{max-width:520px}}
 @media (max-width:480px){.painel{padding:20px}.painel-num strong{font-size:64px}}
 
@@ -220,24 +218,20 @@ p{text-wrap:pretty}
 }
 
 /* atalhos da página inicial */
-.atalhos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.atalhos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
 .atalho{display:flex;flex-direction:column;gap:10px;padding:26px;border:1px solid var(--linha);border-radius:var(--raio-g);background:var(--papel);text-decoration:none;color:var(--tinta);transition:border-color .2s,transform .2s,box-shadow .2s;min-width:0}
 .atalho:hover{border-color:var(--marinho);transform:translateY(-2px);box-shadow:var(--sombra)}
 .atalho .pilar-ico{margin-bottom:6px}
 .atalho h3{font-family:var(--f-titulo);font-size:26px;font-weight:700;line-height:1.1;color:var(--marinho);margin:0}
 .atalho p{margin:0;color:var(--tinta-2);font-size:15.5px}
 .atalho .link-seta{margin-top:auto;padding-top:6px}
-.faixa-cta{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:clamp(28px,4vw,48px);border-radius:20px;color:var(--sobre);background:radial-gradient(600px 300px at 100% 0%,rgba(28,157,224,.35),transparent 60%),var(--marinho)}
-.faixa-cta h2{font-family:var(--f-titulo);font-size:clamp(28px,3.4vw,40px);font-weight:700;line-height:1.05;margin:0 0 8px}
-.faixa-cta p{margin:0;color:var(--sobre-2);max-width:52ch}
-.faixa-cta .acoes-cta{display:flex;gap:12px;flex-wrap:wrap}
-@media (max-width:960px){.atalhos{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:560px){.atalhos{grid-template-columns:1fr}}
+@media (max-width:860px){.atalhos{grid-template-columns:1fr}}
 
 /* empresa */
 .empresa-grade{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:56px;align-items:start}
 .empresa-texto p{color:var(--tinta-2);font-size:17px;max-width:62ch;margin:0 0 16px}
-.empresa-texto p.citacao{font-size:19px;color:var(--tinta);border-left:4px solid var(--ambar);padding-left:18px;margin-block:8px 20px}
+.empresa-texto .rotulo{display:flex;margin-bottom:18px}
+.empresa-texto p.citacao{font-size:clamp(19px,2vw,22px);line-height:1.5;color:var(--tinta);border-left:4px solid var(--ambar);padding-left:18px;margin-bottom:22px}
 .ficha-empresa{border:1px solid var(--linha);border-radius:var(--raio-g);overflow:hidden;background:var(--papel);box-shadow:var(--sombra)}
 .ficha-empresa h3{margin:0;padding:14px 20px;background:var(--marinho);color:var(--sobre);font-family:var(--f-dado);font-size:12.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase}
 .ficha-empresa dl{margin:0}
@@ -275,14 +269,6 @@ p{text-wrap:pretty}
 .regra-item p{margin:0;color:var(--tinta-2)}
 .regra-item.excecao{background:var(--ambar-suave);border-color:var(--ambar-linha)}
 @media (max-width:760px){.regra{grid-template-columns:1fr}}
-.tipos{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:20px}
-.tipo-card{display:flex;flex-direction:column;border:1px solid var(--linha);border-radius:var(--raio-g);overflow:hidden;background:var(--papel);text-decoration:none;color:var(--tinta);transition:border-color .2s,transform .2s,box-shadow .2s;min-width:0}
-.tipo-card:hover{border-color:var(--marinho);transform:translateY(-2px);box-shadow:var(--sombra)}
-.tipo-card .carro-midia{aspect-ratio:16/9}
-.tipo-corpo{display:flex;flex-direction:column;gap:4px;flex:1;padding:18px 20px 20px}
-.tipo-corpo h3{font-family:var(--f-titulo);font-size:24px;font-weight:700;color:var(--marinho);margin:0;line-height:1.1}
-.tipo-corpo p{margin:0 0 8px;color:var(--tinta-2);font-size:15px}
-.tipo-corpo .link-seta{margin-top:auto}
 .correios{display:grid;grid-template-columns:auto minmax(0,1fr);gap:24px;align-items:center;margin-top:40px;padding:28px;border-radius:var(--raio-g);background:var(--papel);border:1px solid var(--linha)}
 .correios .pilar-ico{margin:0;width:64px;height:64px}
 .correios h3{font-family:var(--f-titulo);font-size:28px;font-weight:700;color:var(--marinho);margin:0 0 6px;line-height:1.1}
@@ -449,16 +435,7 @@ p{text-wrap:pretty}
 .passo-num{display:block;font-family:var(--f-titulo);font-size:56px;font-weight:800;line-height:.9;color:var(--azul);margin-bottom:14px}
 .passo h3{font-family:var(--f-titulo);font-size:24px;font-weight:700;line-height:1.1;color:var(--marinho);margin:0 0 8px}
 .passo p{margin:0;color:var(--tinta-2);font-size:15.5px}
-.faq{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:48px;align-items:start}
-.faq-lista{border-top:1px solid var(--linha)}
-.faq details{border-bottom:1px solid var(--linha)}
-.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;cursor:pointer;font-weight:600;font-size:17.5px;color:var(--tinta)}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary .ico{transition:transform .2s;color:var(--azul-texto)}
-.faq details[open] summary .ico{transform:rotate(45deg)}
-.faq summary:hover{color:var(--marinho)}
-.faq details p{margin:-6px 0 20px;color:var(--tinta-2);max-width:64ch}
-@media (max-width:960px){.passos{grid-template-columns:repeat(2,minmax(0,1fr))}.faq{grid-template-columns:1fr;gap:20px}}
+@media (max-width:960px){.passos{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.passos{grid-template-columns:1fr}}
 
 /* ---------- contato ---------- */
@@ -516,7 +493,7 @@ input[type="checkbox"]{width:auto}
 .gestao-acoes{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
 .gestao-acoes .esp{flex:1}
 .gestao-fonte{margin:14px 0 0;font-size:13.5px;color:var(--tinta-2)}
-.tabela-rolagem{overflow-x:auto;border:1px solid var(--linha);border-radius:12px}
+.tabela-rolagem{position:relative;overflow-x:auto;border:1px solid var(--linha);border-radius:12px}
 table.tabela{width:100%;border-collapse:collapse;font-size:14.5px}
 .tabela th{background:var(--marinho);color:var(--sobre);text-align:left;font-weight:700;padding:11px 14px;white-space:nowrap}
 .tabela td{padding:11px 14px;border-bottom:1px solid var(--linha);vertical-align:middle}
@@ -645,7 +622,6 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
       <a href="#frota" data-nav="frota">Frota</a>
       <a href="#seminovos" data-nav="seminovos">Seminovos</a>
       <a href="#procedencia" data-nav="procedencia">Procedência</a>
-      <a href="#como-comprar" data-nav="como-comprar">Como comprar</a>
       <a href="#contato" data-nav="contato">Contato</a>
     </nav>
     <a class="btn btn-wpp btn-p js-wpp" href="#contato" target="_blank" rel="noopener">
@@ -670,7 +646,7 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
             <span>Mantemos com disciplina.</span>
             <span class="destaque">Vendemos com honestidade.</span>
           </h1>
-          <p class="lead">Fundada há mais de 30 anos, a Marfer Transportes opera frota própria em todo o Brasil, com contrato ativo com os Correios e presença em múltiplos estados. Nossos veículos percorrem milhares de quilômetros com manutenção periódica e controle rigoroso. Quando chegam à venda, já provaram o que valem.</p>
+          <p class="lead">Nossos veículos percorrem milhares de quilômetros com manutenção periódica e controle rigoroso. Quando chegam à venda, já provaram o que valem.</p>
           <div class="hero-ctas">
             <a class="btn btn-ambar" href="#seminovos">Ver seminovos <svg class="ico ico-p"><use href="#i-seta"/></svg></a>
             <a class="btn btn-claro" href="#empresa">Conheça a Marfer</a>
@@ -678,12 +654,10 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
         </div>
         <aside class="painel" aria-label="Resumo da vitrine de seminovos">
           <div class="painel-topo"><span class="pulso">Vitrine Seminovos</span><span id="painel-mes"></span></div>
-          <div class="painel-num"><strong id="painel-total">0</strong><span>veículos<br>disponíveis</span></div>
-          <p class="painel-slogan">Caminhões e vans com procedência garantida.</p>
+          <div class="painel-num"><strong id="painel-total">0</strong><span>veículos<br>na vitrine</span></div>
+          <p class="painel-status" id="painel-status"></p>
           <ul class="painel-tipos" id="painel-tipos"></ul>
           <div class="painel-preco"><span>A partir de</span><strong id="painel-min">R$ 0</strong></div>
-          <a class="btn btn-ambar" href="#seminovos">Abrir vitrine</a>
-          <small>Preços com base na tabela FIPE do mês vigente</small>
         </aside>
       </div>
       <div class="estrada" aria-hidden="true">
@@ -695,8 +669,8 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
     <section class="confianca" aria-label="Números da empresa">
       <div class="wrap">
         <ul>
-          <li><strong class="js-anos">+30 anos</strong><span>de transporte rodoviário de cargas</span></li>
-          <li><strong>Frota própria</strong><span>com manutenção periódica e controle rigoroso</span></li>
+          <li><strong class="js-anos">+15 anos</strong><span>de transporte rodoviário de cargas</span></li>
+          <li><strong>Frota própria</strong><span>a mesma que abastece a vitrine de seminovos</span></li>
           <li><strong>Correios</strong><span>contrato ativo de transporte</span></li>
           <li><strong class="js-estados">Vários estados</strong><span class="js-estados-txt">presença em múltiplos estados do Brasil</span></li>
         </ul>
@@ -721,29 +695,13 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
         <div class="secao-cab">
           <div>
             <span class="rotulo">Conheça a Marfer</span>
-            <h2 class="titulo">Mais de 30 anos de estrada, com frota própria</h2>
+            <h2 class="titulo">Antes de comprar, saiba de onde vem o veículo</h2>
           </div>
         </div>
         <div class="atalhos">
-          <a class="atalho" href="#empresa"><span class="pilar-ico"><svg class="ico"><use href="#i-escudo"/></svg></span><h3>A empresa</h3><p>História, atuação e o contrato com os Correios.</p><span class="link-seta">Conhecer <svg class="ico ico-p"><use href="#i-seta"/></svg></span></a>
+          <a class="atalho" href="#empresa"><span class="pilar-ico"><svg class="ico"><use href="#i-escudo"/></svg></span><h3>A empresa</h3><p>Quem somos e como trabalhamos.</p><span class="link-seta">Conhecer <svg class="ico ico-p"><use href="#i-seta"/></svg></span></a>
           <a class="atalho" href="#frota"><span class="pilar-ico"><svg class="ico"><use href="#i-rota"/></svg></span><h3>Frota própria</h3><p>O caminho de cada veículo, da entrada na frota até a venda.</p><span class="link-seta">Ver a frota <svg class="ico ico-p"><use href="#i-seta"/></svg></span></a>
-          <a class="atalho" href="#procedencia"><span class="pilar-ico"><svg class="ico"><use href="#i-chave"/></svg></span><h3>Procedência</h3><p>Os critérios que um veículo precisa cumprir para ir à venda.</p><span class="link-seta">Ver critérios <svg class="ico ico-p"><use href="#i-seta"/></svg></span></a>
-          <a class="atalho" href="#como-comprar"><span class="pilar-ico"><svg class="ico"><use href="#i-aperto"/></svg></span><h3>Como comprar</h3><p>Do anúncio à transferência, direto com a Marfer.</p><span class="link-seta">Ver o passo a passo <svg class="ico ico-p"><use href="#i-seta"/></svg></span></a>
-        </div>
-      </div>
-    </section>
-
-    <section class="secao">
-      <div class="wrap">
-        <div class="faixa-cta">
-          <div>
-            <h2>Interessado? Fale direto com a gente</h2>
-            <p>Mostramos o histórico do veículo antes de fechar qualquer negócio.</p>
-          </div>
-          <div class="acoes-cta">
-            <a class="btn btn-wpp js-wpp" href="#contato" target="_blank" rel="noopener"><svg class="ico"><use href="#i-wpp"/></svg>Chamar no WhatsApp</a>
-            <a class="btn btn-claro js-insta" href="https://www.instagram.com/marfertransportes/" target="_blank" rel="noopener"><svg class="ico"><use href="#i-insta"/></svg>Instagram</a>
-          </div>
+          <a class="atalho" href="#procedencia"><span class="pilar-ico"><svg class="ico"><use href="#i-chave"/></svg></span><h3>Procedência</h3><p>O que conferimos antes de anunciar um veículo.</p><span class="link-seta">Ver critérios <svg class="ico ico-p"><use href="#i-seta"/></svg></span></a>
         </div>
       </div>
     </section>
@@ -755,8 +713,8 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
       <div class="wrap">
         <div>
           <nav class="trilha" aria-label="Você está em"><a href="#inicio">Início</a><span>/</span><span aria-current="page">A empresa</span></nav>
-          <h1>Mais de 30 anos rodando o Brasil com frota própria</h1>
-          <p class="intro">Empresa familiar de transporte rodoviário de cargas, com sede em Santa Maria, no Rio Grande do Sul.</p>
+          <h1>Mais de <span class="js-anos-n">15</span> anos rodando o Brasil com frota própria</h1>
+          <p class="intro">Empresa familiar de transporte rodoviário de cargas, fundada em <span class="js-fundacao">2003</span> e com sede em Santa Maria, no Rio Grande do Sul.</p>
         </div>
       </div>
       <div class="asfalto asfalto-fino" aria-hidden="true"></div>
@@ -766,10 +724,9 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
         <div class="empresa-grade">
           <div class="empresa-texto">
             <span class="rotulo">Quem somos</span>
-            <h2 class="titulo">Frota própria, contrato com os Correios e presença em vários estados</h2>
-            <p class="citacao">Fundada há mais de 30 anos, a Marfer Transportes opera frota própria em todo o Brasil, com contrato ativo com os Correios e presença em múltiplos estados.</p>
-            <p>Nossos veículos percorrem milhares de quilômetros com manutenção periódica e controle rigoroso. Essa rotina é cuidada de perto, porque a operação depende dela todos os dias.</p>
-            <p>É a mesma rotina que explica a nossa vitrine de seminovos: os veículos que vendemos são os que trabalharam para a Marfer. Quando chegam à venda, já provaram o que valem.</p>
+            <p class="citacao">A Marfer Transportes opera frota própria em todo o Brasil, com contrato ativo com os Correios e presença em múltiplos estados.</p>
+            <p>A operação depende de veículos que rodam todos os dias, por isso a frota é cuidada de perto.</p>
+            <p>É dessa rotina que nasce a vitrine de seminovos: os veículos que vendemos são os que trabalharam para a Marfer.</p>
           </div>
           <aside class="ficha-empresa" aria-label="Ficha da empresa">
             <h3>Ficha da empresa</h3>
@@ -777,8 +734,8 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
               <div><dt>Razão social</dt><dd>Marfer Transportes LTDA</dd></div>
               <div><dt>Atividade</dt><dd>Transporte rodoviário de cargas</dd></div>
               <div><dt>Sede</dt><dd class="js-sede">Santa Maria/RS</dd></div>
-              <div><dt>Fundação</dt><dd id="ficha-fundacao">Há mais de 30 anos</dd></div>
-              <div><dt>Frota</dt><dd>Própria, com manutenção periódica</dd></div>
+              <div><dt>Fundação</dt><dd class="js-fundacao">2003</dd></div>
+              <div><dt>Em operação</dt><dd id="ficha-operacao">Desde 2009</dd></div>
               <div><dt>Contrato</dt><dd>Correios (ativo)</dd></div>
               <div><dt>Atuação</dt><dd id="ficha-atuacao">Múltiplos estados</dd></div>
               <div><dt>Gestão</dt><dd>Empresa familiar</dd></div>
@@ -792,7 +749,7 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
         <div class="secao-cab">
           <div>
             <span class="rotulo">Como trabalhamos</span>
-            <h2 class="titulo">Compramos com critério. Mantemos com disciplina. Vendemos com honestidade.</h2>
+            <h2 class="titulo">Três compromissos em cada veículo</h2>
           </div>
         </div>
         <div class="pilares">
@@ -800,7 +757,7 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
             <div class="pilar-ico"><svg class="ico"><use href="#i-escudo"/></svg></div>
             <small>Na compra</small>
             <h3>Compramos com critério</h3>
-            <p>Cada veículo entra na frota para trabalhar todos os dias, na operação própria e no contrato com os Correios.</p>
+            <p>Cada veículo é escolhido para aguentar a rotina diária da operação.</p>
           </article>
           <article class="pilar">
             <div class="pilar-ico"><svg class="ico"><use href="#i-chave"/></svg></div>
@@ -812,7 +769,7 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
             <div class="pilar-ico"><svg class="ico"><use href="#i-aperto"/></svg></div>
             <small>Na venda</small>
             <h3>Vendemos com honestidade</h3>
-            <p>Preço com base na tabela FIPE do mês, ajustado pelo estado real. O histórico é mostrado antes de fechar negócio.</p>
+            <p>Preço justo e histórico aberto: quem compra sabe exatamente o que está levando.</p>
           </article>
         </div>
       </div>
@@ -826,7 +783,7 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
         <div>
           <nav class="trilha" aria-label="Você está em"><a href="#inicio">Início</a><span>/</span><span aria-current="page">Frota</span></nav>
           <h1>Do primeiro quilômetro à venda, o veículo fica com a gente</h1>
-          <p class="intro">Os seminovos Marfer saem direto da nossa operação, sem intermediários. Por isso conhecemos a história de cada um.</p>
+          <p class="intro">Por isso conhecemos a história de cada veículo que vendemos.</p>
         </div>
       </div>
       <div class="asfalto asfalto-fino" aria-hidden="true"></div>
@@ -836,10 +793,10 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
         <div class="secao-cab"><div><span class="rotulo">Ciclo do veículo</span><h2 class="titulo">Cinco etapas, uma só dona</h2></div></div>
         <ol class="ciclo">
           <li><span class="marco">1</span><div><h3>Entrada na frota</h3><p>O veículo é escolhido para a rotina de transporte da Marfer.</p></div></li>
-          <li><span class="marco">2</span><div><h3>Operação</h3><p>Rodagem diária em vários estados, incluindo o contrato com os Correios.</p></div></li>
+          <li><span class="marco">2</span><div><h3>Operação</h3><p>Rodagem diária em vários estados.</p></div></li>
           <li><span class="marco">3</span><div><h3>Manutenção periódica</h3><p>Revisões no prazo e registro de cada serviço feito no veículo.</p></div></li>
-          <li><span class="marco">4</span><div><h3>Avaliação</h3><p class="js-ciclo-avaliacao">Em geral a partir de 5 anos de operação, o veículo passa pelos critérios de venda.</p></div></li>
-          <li><span class="marco">5</span><div><h3>Seminovos Marfer</h3><p>Vai para a vitrine sem a identidade visual da operação, com histórico completo e documentação em dia.</p></div></li>
+          <li><span class="marco">4</span><div><h3>Avaliação</h3><p>O veículo passa pelos critérios de seleção antes de ir à venda.</p></div></li>
+          <li><span class="marco">5</span><div><h3>Seminovos Marfer</h3><p>Entra na vitrine com histórico completo e documentação em dia.</p></div></li>
         </ol>
         <div class="regra">
           <div class="regra-item">
@@ -853,12 +810,6 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
             <p>Às vezes a operação pede a venda de um veículo antes desse prazo. Ele entra na vitrine com os mesmos critérios e o mesmo histórico aberto.</p>
           </div>
         </div>
-      </div>
-    </section>
-    <section class="secao secao-nevoa">
-      <div class="wrap">
-        <div class="secao-cab"><div><span class="rotulo">Tipos de veículo</span><h2 class="titulo">O que sai da nossa frota para a vitrine</h2></div></div>
-        <div class="tipos" id="tipos-frota"></div>
         <div class="correios">
           <span class="pilar-ico"><svg class="ico"><use href="#i-pacote"/></svg></span>
           <div>
@@ -877,7 +828,7 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
         <div>
           <nav class="trilha" aria-label="Você está em"><a href="#inicio">Início</a><span>/</span><span aria-current="page">Seminovos</span></nav>
           <h1>Caminhões e vans com procedência garantida</h1>
-          <p class="intro">Veículos da frota operacional da Marfer. Cada unidade tem histórico de manutenção para você conferir antes de fechar negócio.</p>
+          <p class="intro">Veículos que rodaram na frota operacional da Marfer.</p>
         </div>
         <svg class="selo" viewBox="0 0 120 120" role="img" aria-label="Selo: frota comercial certificada">
           <defs>
@@ -946,7 +897,7 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
       <div class="wrap">
         <div class="secao-cab"><div><span class="rotulo">Critérios de seleção</span><h2 class="titulo">Quatro pontos conferidos em toda unidade</h2></div></div>
         <div class="criterios">
-          <div class="criterio"><svg class="ico"><use href="#i-calendario"/></svg><h3>Tempo de operação conhecido</h3><p class="js-crit-tempo">A regra é vender a partir de 5 anos na frota. Cada ficha mostra há quanto tempo o veículo opera com a gente.</p></div>
+          <div class="criterio"><svg class="ico"><use href="#i-calendario"/></svg><h3>Tempo de operação conhecido</h3><p>Cada ficha mostra há quanto tempo o veículo roda na frota Marfer.</p></div>
           <div class="criterio"><svg class="ico"><use href="#i-chave"/></svg><h3>Estado mecânico verificado</h3><p>Motor, transmissão, freios e suspensão conferidos antes do anúncio.</p></div>
           <div class="criterio"><svg class="ico"><use href="#i-velocimetro"/></svg><h3>Quilometragem avaliada</h3><p>Analisada conforme o modelo e o histórico de uso, sem um teto fixo por tipo.</p></div>
           <div class="criterio"><svg class="ico"><use href="#i-sem-batida"/></svg><h3>Sem dano estrutural</h3><p>Nenhum veículo com histórico de dano estrutural ou acidente grave.</p></div>
@@ -984,77 +935,30 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
     </section>
   </div>
 
-  <!-- ===================== PÁGINA: COMO COMPRAR ===================== -->
-  <div class="pagina" data-pagina="como-comprar" hidden>
-    <header class="cab-pagina">
-      <div class="wrap">
-        <div>
-          <nav class="trilha" aria-label="Você está em"><a href="#inicio">Início</a><span>/</span><span aria-current="page">Como comprar</span></nav>
-          <h1>Do anúncio à transferência, direto com a Marfer</h1>
-          <p class="intro">Sem intermediários. Você conversa com quem operou o veículo e sabe responder sobre ele.</p>
-        </div>
-      </div>
-      <div class="asfalto asfalto-fino" aria-hidden="true"></div>
-    </header>
-    <section class="secao">
-      <div class="wrap">
-        <ol class="passos">
-          <li class="passo"><span class="passo-num">1</span><h3>Escolha na vitrine</h3><p>Filtre por tipo, preço ou quilometragem e abra a ficha completa do veículo.</p></li>
-          <li class="passo"><span class="passo-num">2</span><h3>Fale direto com a gente</h3><p>Chame no WhatsApp ou no Instagram. Quem atende é a própria Marfer.</p></li>
-          <li class="passo"><span class="passo-num">3</span><h3>Confira o histórico</h3><p>Mostramos o histórico de manutenção do veículo antes de fechar qualquer negócio.</p></li>
-          <li class="passo"><span class="passo-num">4</span><h3>Feche com segurança</h3><p>Documentação regularizada e transferência assistida do começo ao fim.</p></li>
-        </ol>
-      </div>
-    </section>
-    <section class="secao secao-nevoa">
-      <div class="wrap faq">
-        <div>
-          <span class="rotulo">Dúvidas</span>
-          <h2 class="titulo">Perguntas frequentes</h2>
-        </div>
-        <div class="faq-lista">
-          <details>
-            <summary>Como vocês definem o preço?<svg class="ico"><use href="#i-mais"/></svg></summary>
-            <p>Usamos a tabela FIPE do mês vigente como base e ajustamos pelo estado real de cada veículo. Sem inflação artificial e sem desconto impossível.</p>
-          </details>
-          <details>
-            <summary>Posso ver o histórico de manutenção antes de comprar?<svg class="ico"><use href="#i-mais"/></svg></summary>
-            <p>Sim. Mostramos o histórico completo do veículo antes de fechar qualquer negócio. É só pedir pelo WhatsApp ou pelo Instagram.</p>
-          </details>
-          <details>
-            <summary>Os veículos passam por alguma seleção?<svg class="ico"><use href="#i-mais"/></svg></summary>
-            <p>Passam. Todo veículo à venda tem estado mecânico verificado, quilometragem avaliada conforme o modelo e nenhum histórico de dano estrutural ou acidente grave.</p>
-          </details>
-          <details>
-            <summary>Vocês vendem veículos com menos de 5 anos?<svg class="ico"><use href="#i-mais"/></svg></summary>
-            <p class="js-faq-antecipada">A regra é vender a partir de 5 anos de operação. Quando a operação pede, vendemos unidades mais novas, com os mesmos critérios de seleção.</p>
-          </details>
-          <details>
-            <summary>Como fica a documentação?<svg class="ico"><use href="#i-mais"/></svg></summary>
-            <p>A documentação está regularizada e a transferência é assistida pela nossa equipe até o fim.</p>
-          </details>
-          <details>
-            <summary>Tem intermediário na venda?<svg class="ico"><use href="#i-mais"/></svg></summary>
-            <p>Não. Você negocia direto com a Marfer, que operou o veículo na própria frota.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ===================== PÁGINA: CONTATO ===================== -->
+  <!-- ===================== PÁGINA: CONTATO (inclui como comprar) ===================== -->
   <div class="pagina" data-pagina="contato" hidden>
     <header class="cab-pagina">
       <div class="wrap">
         <div>
           <nav class="trilha" aria-label="Você está em"><a href="#inicio">Início</a><span>/</span><span aria-current="page">Contato</span></nav>
           <h1>Interessado? Fale direto com a gente</h1>
-          <p class="intro">Fale pelo WhatsApp ou pelo Instagram. Mostramos o histórico do veículo antes de fechar qualquer negócio.</p>
+          <p class="intro">Sem intermediários: quem atende é a própria Marfer, que operou o veículo.</p>
         </div>
       </div>
       <div class="asfalto asfalto-fino" aria-hidden="true"></div>
     </header>
-    <section class="secao">
+    <section class="secao" style="padding-bottom:40px">
+      <div class="wrap">
+        <div class="secao-cab"><div><span class="rotulo">Como comprar</span><h2 class="titulo">Quatro passos, do anúncio à transferência</h2></div></div>
+        <ol class="passos">
+          <li class="passo"><span class="passo-num">1</span><h3>Escolha na vitrine</h3><p>Filtre por tipo, preço ou quilometragem e abra a ficha do veículo.</p></li>
+          <li class="passo"><span class="passo-num">2</span><h3>Chame a Marfer</h3><p>Pelo WhatsApp ou pelo Instagram, logo abaixo.</p></li>
+          <li class="passo"><span class="passo-num">3</span><h3>Confira o histórico</h3><p>Mostramos o histórico de manutenção antes de fechar qualquer negócio.</p></li>
+          <li class="passo"><span class="passo-num">4</span><h3>Feche com segurança</h3><p>Documentação regularizada e transferência assistida do começo ao fim.</p></li>
+        </ol>
+      </div>
+    </section>
+    <section class="secao" style="padding-top:40px">
       <div class="wrap contato-grade">
         <div>
           <div class="contato-botoes">
@@ -1133,7 +1037,7 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
     <div class="rodape-grade">
       <div>
         <img src="img/logo-branca.png" alt="Marfer Transportes" width="288" height="69">
-        <p class="frase">Compramos com critério. Mantemos com disciplina. Vendemos com honestidade.</p>
+        <p class="frase">Transporte rodoviário de cargas com frota própria, de Santa Maria para o Brasil.</p>
       </div>
       <div>
         <h2>Navegue</h2>
@@ -1142,7 +1046,7 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
           <li><a href="#frota">Frota própria</a></li>
           <li><a href="#seminovos">Seminovos</a></li>
           <li><a href="#procedencia">Procedência</a></li>
-          <li><a href="#como-comprar">Como comprar</a></li>
+          <li><a href="#contato">Contato</a></li>
         </ul>
       </div>
       <div>
@@ -1150,7 +1054,6 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
         <ul>
           <li><a class="js-wpp" href="#contato" target="_blank" rel="noopener">WhatsApp</a></li>
           <li><a class="js-insta" href="https://www.instagram.com/marfertransportes/" target="_blank" rel="noopener">Instagram @marfertransportes</a></li>
-          <li><a href="#contato">Página de contato</a></li>
           <li class="js-cidade">Santa Maria/RS</li>
         </ul>
       </div>
@@ -1268,13 +1171,13 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
 
   const TIPOS = {
     van:        { rotulo: 'Van',            plural: 'Vans',            chip: 'Vans',        desc: 'Furgões para carga leve e volumosa.' },
-    leve:       { rotulo: 'Caminhão 3/4',   plural: 'Caminhões 3/4',   chip: '3/4 e VUC',   desc: 'Caminhões leves, ágeis no trânsito da cidade.' },
+    leve:       { rotulo: 'Caminhão 3/4',   plural: 'Caminhões 3/4',   chip: '3/4',   desc: 'Caminhões leves, ágeis no trânsito da cidade.' },
     toco:       { rotulo: 'Caminhão toco',  plural: 'Caminhões toco',  chip: 'Toco',        desc: 'Dois eixos, para carga média.' },
     truck:      { rotulo: 'Caminhão truck', plural: 'Caminhões truck', chip: 'Truck',       desc: 'Três eixos (6x2), mais capacidade de carga.' },
     utilitario: { rotulo: 'Utilitário',     plural: 'Utilitários',     chip: 'Utilitários', desc: 'Compactos para entregas rápidas.' }
   };
   const STATUS = { disponivel: 'Disponível', reservado: 'Reservado', vendido: 'Vendido' };
-  const PAGINAS = { inicio: '', empresa: 'A empresa', frota: 'Frota', seminovos: 'Seminovos', procedencia: 'Procedência', 'como-comprar': 'Como comprar', contato: 'Contato', gestao: 'Gestão da vitrine' };
+  const PAGINAS = { inicio: '', empresa: 'A empresa', frota: 'Frota', seminovos: 'Seminovos', procedencia: 'Procedência', contato: 'Contato', gestao: 'Gestão da vitrine' };
   const CHAVE_DADOS = 'marfer-site-veiculos-v2';
   const CHAVE_AVISO = 'marfer-site-aviso-v1';
   const HOJE = new Date();
@@ -1521,39 +1424,33 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
 
   /* ---------- página: início ---------- */
   function renderInicio() {
-    const aVenda = veiculos.filter((v) => v.status === 'disponivel');
-    $('#painel-total').textContent = aVenda.length;
+    // Vitrine = tudo que não foi vendido (disponível + reservado), igual à página Seminovos
+    const naVitrine = veiculos.filter((v) => v.status !== 'vendido');
+    const aVenda = naVitrine.filter((v) => v.status === 'disponivel');
+    const nReservados = naVitrine.length - aVenda.length;
+    $('#painel-total').textContent = naVitrine.length;
+    $('#painel-status').textContent = plural(aVenda.length, 'disponível', 'disponíveis') + (nReservados ? ` · ${plural(nReservados, 'reservado', 'reservados')}` : '');
     $('#painel-mes').textContent = HOJE.toLocaleDateString('pt-BR', { month: 'short', year: 'numeric' }).replace('.', '');
-    const porTipo = Object.keys(TIPOS).map((t) => [t, aVenda.filter((v) => v.tipo === t).length]).filter(([, n]) => n > 0);
+    const porTipo = Object.keys(TIPOS).map((t) => [t, naVitrine.filter((v) => v.tipo === t).length]).filter(([, n]) => n > 0);
     const maxTipo = Math.max(1, ...porTipo.map(([, n]) => n));
     $('#painel-tipos').innerHTML = porTipo.map(([t, n]) =>
       `<li><span>${TIPOS[t].chip}</span><span class="barra"><i style="width:${(n / maxTipo) * 100}%"></i></span><b>${n}</b></li>`).join('');
     const precos = aVenda.map((v) => v.preco).filter((p) => p != null);
     $('#painel-min').textContent = precos.length ? fmtBRL(Math.min(...precos)) : 'Sob consulta';
-    const destaques = veiculos.filter((v) => v.status !== 'vendido').sort(ordemRecentes).slice(0, 3);
+    const destaques = naVitrine.slice().sort(ordemRecentes).slice(0, 3);
     $('#grade-destaques').innerHTML = destaques.map((v) => cartao(v, { comparar: false })).join('');
-    const total = veiculos.filter((v) => v.status !== 'vendido').length;
-    $('#ver-todos').innerHTML = `Ver todos os ${total} veículos ${icone('seta', 'ico-p')}`;
-  }
-
-  /* ---------- página: frota ---------- */
-  function renderFrota() {
-    const tipos = Object.keys(TIPOS).filter((t) => veiculos.some((v) => v.tipo === t));
-    $('#tipos-frota').innerHTML = tipos.map((t) => {
-      const n = veiculos.filter((v) => v.tipo === t && v.status !== 'vendido').length;
-      return `<a class="tipo-card" href="#seminovos-${t}">
-        <span class="carro-midia midia-ilustra">${ilustracao(t)}</span>
-        <span class="tipo-corpo"><h3>${TIPOS[t].plural}</h3><p>${TIPOS[t].desc}</p>
-        <span class="link-seta">${n ? `Ver ${plural(n, 'unidade à venda', 'unidades à venda')}` : 'Nenhuma à venda agora'} ${icone('seta', 'ico-p')}</span></span>
-      </a>`;
-    }).join('');
+    $('#ver-todos').innerHTML = `Ver todos os ${naVitrine.length} veículos ${icone('seta', 'ico-p')}`;
   }
 
   /* ---------- textos que dependem da configuração ---------- */
   function renderInstitucional() {
-    const anos = CONFIG.anoFundacao ? ANO_ATUAL - CONFIG.anoFundacao : CONFIG.anosDeEstrada;
-    $$('.js-anos').forEach((e) => { e.textContent = `+${anos} anos`; });
-    $('#ficha-fundacao').textContent = CONFIG.anoFundacao ? `${CONFIG.anoFundacao} (${anos} anos)` : `Há mais de ${anos} anos`;
+    // "Mais de N anos" em múltiplos de 5, contando do início da operação (2009 = mais de 15 anos em 2026)
+    const anosOperando = ANO_ATUAL - (Number(CONFIG.inicioOperacao) || ANO_ATUAL);
+    const maisDe = Math.max(1, Math.floor((anosOperando - 1) / 5) * 5);
+    $$('.js-anos').forEach((e) => { e.textContent = `+${maisDe} anos`; });
+    $$('.js-anos-n').forEach((e) => { e.textContent = maisDe; });
+    $$('.js-fundacao').forEach((e) => { e.textContent = CONFIG.anoFundacao || 'a confirmar'; });
+    $('#ficha-operacao').textContent = CONFIG.inicioOperacao ? `Desde ${CONFIG.inicioOperacao}` : 'A confirmar';
     const ufs = CONFIG.estadosAtendidos || [];
     if (ufs.length) {
       $$('.js-estados').forEach((e) => { e.textContent = `${ufs.length} estados`; });
@@ -1563,10 +1460,7 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
     const sede = CONFIG.enderecoSede ? `${CONFIG.enderecoSede}, ${CONFIG.cidadeSede}` : CONFIG.cidadeSede;
     $$('.js-sede').forEach((e) => { e.textContent = sede; });
     $$('.js-cidade').forEach((e) => { e.textContent = CONFIG.cidadeSede; });
-    $$('.js-ciclo-avaliacao').forEach((e) => { e.textContent = `Em geral a partir de ${CICLO} anos de operação, o veículo passa pelos critérios de venda.`; });
     $$('.js-regra-titulo').forEach((e) => { e.textContent = `Venda a partir de ${CICLO} anos de operação`; });
-    $$('.js-crit-tempo').forEach((e) => { e.textContent = `A regra é vender a partir de ${CICLO} anos na frota. Cada ficha mostra há quanto tempo o veículo opera com a gente.`; });
-    $$('.js-faq-antecipada').forEach((e) => { e.textContent = `A regra é vender a partir de ${CICLO} anos de operação. Quando a operação pede, vendemos unidades mais novas, com os mesmos critérios de seleção.`; });
     $('#nota-fipe').textContent = `Preços com base na tabela FIPE de ${MES_VIGENTE}, ajustados pelo estado de conservação de cada veículo.`;
     $('#ano-atual').textContent = ANO_ATUAL;
 
@@ -1647,26 +1541,25 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
             <button type="button" class="btn btn-linha" id="ficha-copiar">${icone('copiar')}Copiar resumo</button>
           </div>
         </div>`;
-    const criterios = [
-      [`${tempoTxt(anos)} de operação na frota Marfer`, ''],
-      ['Estado mecânico verificado', ''],
-      ['Quilometragem avaliada para o modelo', ''],
-      ['Sem dano estrutural ou acidente grave', '']
+    const procedencia = [
+      `${tempoTxt(anos)} na frota Marfer, desde ${v.frotaDesde}`,
+      'Aprovado nos critérios de seleção da Marfer',
+      'Histórico de manutenção disponível antes da compra',
+      'Documentação regularizada e transferência assistida'
     ];
     const tec = [
-      ['Ano (fabricação/modelo)', anoTxt(v)], ['Quilometragem', `${fmtNum(v.km)} km`], ['Combustível', v.combustivel], ['Câmbio', v.cambio],
-      ['Tipo', TIPOS[v.tipo].rotulo], ['Carroceria', v.carroceria || 'Não informada'], ['Cor', v.cor || 'Não informada'],
-      ['Na frota desde', `${v.frotaDesde}`], ['Local', v.local], ['Código', v.codigo]
+      ['Ano (fabricação/modelo)', anoTxt(v)], ['Tipo', TIPOS[v.tipo].rotulo], ['Combustível', v.combustivel], ['Câmbio', v.cambio],
+      ['Carroceria', v.carroceria || 'Não informada'], ['Cor', v.cor || 'Não informada'], ['Local', v.local], ['Código', v.codigo]
     ];
     const outros = veiculos.filter((x) => x !== v && x.status !== 'vendido')
       .sort((a, b) => ((b.tipo === v.tipo) - (a.tipo === v.tipo)) || ordemRecentes(a, b)).slice(0, 3);
 
     box.innerHTML = `
-      <nav class="trilha clara" aria-label="Você está em"><a href="#inicio">Início</a><span>/</span><a href="#seminovos">Seminovos</a><span>/</span><span aria-current="page">${esc(titulo(v))} · ${esc(v.codigo)}</span></nav>
+      <nav class="trilha clara" aria-label="Você está em"><a href="#inicio">Início</a><span>/</span><a href="#seminovos">Seminovos</a><span>/</span><span aria-current="page">${esc(titulo(v))}</span></nav>
       <div class="ficha">
         <div>${galeria}</div>
         <div class="ficha-info">
-          <div class="carro-meta"><span class="mono">${esc(v.codigo)}</span><span>${TIPOS[v.tipo].rotulo} da frota Marfer</span></div>
+          <div class="carro-meta"><span class="mono">${esc(v.codigo)}</span></div>
           <h1>${esc(titulo(v))}</h1>
           <p class="versao">${esc(v.versao)} · ${anoTxt(v)}</p>
           ${aviso}
@@ -1681,19 +1574,13 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
       <div class="ficha-baixo">
         <div>
           <h2>Ficha técnica</h2>
-          <div class="odometro"><span class="digitos" aria-label="${fmtNum(v.km)} quilômetros">${odometro(v.km)}</span><small>km rodados<br>em ${tempoTxt(anos)} de operação</small></div>
+          <div class="odometro"><span class="digitos" aria-label="${fmtNum(v.km)} quilômetros">${odometro(v.km)}</span><small>km rodados</small></div>
           <dl class="tecnica">${tec.map(([k, val]) => `<div><dt>${k}</dt><dd>${esc(val)}</dd></div>`).join('')}</dl>
           ${v.destaques.length ? `<div class="destaques">${v.destaques.map((d) => `<span>${esc(d)}</span>`).join('')}</div>` : ''}
         </div>
         <div>
-          <h2>Critérios Marfer</h2>
-          <ul class="lista-check">${criterios.map(([t, sub]) => `<li><span class="ok">${icone('check')}</span><span>${esc(t)}${sub ? `<small>${esc(sub)}</small>` : ''}</span></li>`).join('')}</ul>
-          <h2 style="margin-top:24px">O que você leva</h2>
-          <ul class="lista-check">
-            <li><span class="ok">${icone('check')}</span>Histórico completo de manutenção</li>
-            <li><span class="ok">${icone('check')}</span>Documentação regularizada e transferência assistida</li>
-            <li><span class="ok">${icone('check')}</span>Procedência verificável, sem intermediários</li>
-          </ul>
+          <h2>Procedência</h2>
+          <ul class="lista-check">${procedencia.map((t) => `<li><span class="ok">${icone('check')}</span><span>${esc(t)}</span></li>`).join('')}</ul>
         </div>
       </div>
       ${outros.length ? `<div class="outros">
@@ -1959,6 +1846,8 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
       const t = h.slice(10);
       pagina = 'seminovos';
       filtro.tipo = TIPOS[t] ? t : 'todos';
+    } else if (pagina === 'como-comprar') {
+      pagina = 'contato'; // endereço antigo: o passo a passo agora fica na página de contato
     } else if (!(pagina in PAGINAS)) {
       pagina = 'inicio';
     }
@@ -1986,7 +1875,6 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
   }
   function renderTudo() {
     renderInicio();
-    renderFrota();
     renderSelectContato();
     if (paginaAtual === 'seminovos') renderVitrine();
     if (paginaAtual === 'gestao') renderGestao();

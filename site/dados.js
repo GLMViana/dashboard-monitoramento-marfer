@@ -15,8 +15,8 @@ const CONFIG = {
   instagram: 'marfertransportes',
   cidadeSede: 'Santa Maria/RS',
   enderecoSede: '',            // endereço completo, quando confirmado
-  anoFundacao: null,           // ex.: 1993. Vazio = "há mais de 30 anos"
-  anosDeEstrada: 30,           // usado enquanto o ano de fundação não for confirmado
+  anoFundacao: 2003,           // ano de fundação da empresa
+  inicioOperacao: 2009,        // ano em que a operação começou; o site conta "mais de 15 anos" a partir daqui
   estadosAtendidos: [],        // ex.: ['RS', 'SC', 'PR']. Vazio = "múltiplos estados"
   cicloPadraoAnos: 5,          // tempo de uso mais comum antes da venda
   mostrarAvisoPrototipo: true  // faixa amarela no topo avisando que os dados são de exemplo
@@ -25,7 +25,7 @@ const CONFIG = {
 /* ---------- 2. VEÍCULOS DA VITRINE ----------
    Dados de EXEMPLO para o protótipo. Troque pelos veículos reais.
 
-   tipo:   'van' | 'leve' (3/4 e VUC) | 'toco' | 'truck' | 'utilitario'
+   tipo:   'van' | 'leve' (3/4) | 'toco' | 'truck' | 'utilitario'
    status: 'disponivel' | 'reservado' | 'vendido'
    preco:  número sem pontos (169900). Use null para "Sob consulta".
    fipe:   valor FIPE de referência do mês (opcional). Quando preenchido, a ficha mostra a diferença.

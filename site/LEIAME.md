@@ -8,23 +8,24 @@ Cada item do menu abre uma página própria. O endereço muda junto (`index.html
 
 | Página | Endereço | O que tem |
 | --- | --- | --- |
-| Início | `#inicio` | Frase institucional, resumo da vitrine, os 3 veículos mais novos e atalhos para as outras páginas |
-| Empresa | `#empresa` | Texto institucional, ficha da empresa e os três pilares |
-| Frota | `#frota` | Ciclo do veículo, regra dos 5 anos e a exceção para veículos mais novos, tipos de veículo e o contrato com os Correios |
+| Início | `#inicio` | Frase institucional, números da empresa, resumo da vitrine, os 3 veículos mais novos e atalhos para Empresa, Frota e Procedência |
+| Empresa | `#empresa` | Quem somos, ficha da empresa e os três compromissos (compra, operação, venda) |
+| Frota | `#frota` | Ciclo do veículo, regra dos 5 anos com a exceção e o contrato com os Correios |
 | Seminovos | `#seminovos` | Vitrine com busca, filtro por tipo (vans, 3/4, toco, truck), ordenação e comparação de até 3 veículos |
-| Veículo | `#veiculo-mf-0412` | Ficha completa de cada veículo, com outros veículos sugeridos no fim |
+| Veículo | `#veiculo-mf-0412` | Ficha de cada veículo, com outros veículos sugeridos no fim |
 | Procedência | `#procedencia` | Critérios de seleção, o que o comprador leva e como o preço é formado |
-| Como comprar | `#como-comprar` | Passo a passo e perguntas frequentes |
-| Contato | `#contato` | WhatsApp, Instagram, QR code e formulário que monta a mensagem |
+| Contato | `#contato` | Como comprar em 4 passos, WhatsApp, Instagram, QR code e formulário que monta a mensagem |
+
+Cada informação aparece num lugar só: a regra dos 5 anos fica em Frota, os critérios e o preço justo em Procedência, o passo a passo em Contato.
 | Gestão | `#gestao` | Link no rodapé. Painel para cadastrar, editar, excluir e mudar o status dos veículos |
 
 ## Como editar
 
 O arquivo do dia a dia é o **`dados.js`**. Ele tem dois blocos:
 
-**1. `CONFIG`:** número do WhatsApp, Instagram, sede, ano de fundação, estados atendidos, regra de anos na frota (`cicloPadraoAnos`) e a faixa amarela de protótipo.
+**1. `CONFIG`:** número do WhatsApp, Instagram, sede, ano de fundação (2003), início da operação (2009, que gera o "mais de 15 anos" do site), estados atendidos, regra de anos na frota (`cicloPadraoAnos`) e a faixa amarela de protótipo.
 
-**2. `VEICULOS_PADRAO`:** a lista de veículos. Cada veículo é um bloco entre chaves `{ }`. Para adicionar, copie um bloco, cole abaixo e troque os valores. Tipos aceitos: `van`, `leve` (3/4 e VUC), `toco`, `truck` e `utilitario`.
+**2. `VEICULOS_PADRAO`:** a lista de veículos. Cada veículo é um bloco entre chaves `{ }`. Para adicionar, copie um bloco, cole abaixo e troque os valores. Tipos aceitos: `van`, `leve` (3/4), `toco`, `truck` e `utilitario`.
 
 Os veículos que estão lá hoje são **exemplos** (modelos reais, mas quilometragens e preços ilustrativos). Antes de mostrar como site real, troque pelos dados da frota.
 
@@ -56,7 +57,6 @@ Fotos enviadas pela gestão viram texto muito longo no arquivo. Para o site defi
 | Item | Onde ajustar |
 | --- | --- |
 | Número de WhatsApp | `CONFIG.whatsapp` no `dados.js` |
-| Ano exato de fundação | `CONFIG.anoFundacao` |
 | Estados onde opera | `CONFIG.estadosAtendidos` |
 | Endereço completo da sede | `CONFIG.enderecoSede` |
 | Fotos e dados reais dos veículos | `VEICULOS_PADRAO` e pasta `fotos/` |
