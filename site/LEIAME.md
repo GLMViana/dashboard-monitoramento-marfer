@@ -16,6 +16,8 @@ Cada item do menu abre uma página própria. O endereço muda junto (`index.html
 | Procedência | `#procedencia` | Critérios de seleção, o que o comprador leva e como o preço é formado |
 | Contato | `#contato` | Como comprar em 4 passos, WhatsApp, Instagram, QR code, formulário que monta a mensagem e perguntas frequentes |
 
+O site tem **modo noturno**: segue o modo do celular ou do computador e pode ser trocado no botão de sol e lua do topo. A escolha fica salva no navegador.
+
 Cada informação aparece num lugar só: a regra dos 5 anos fica em Frota, os critérios e o preço justo em Procedência, o passo a passo em Contato.
 | Gestão | `#gestao` | Link no rodapé. Painel para cadastrar, editar, excluir e mudar o status dos veículos |
 
