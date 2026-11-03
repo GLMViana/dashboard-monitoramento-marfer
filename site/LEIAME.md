@@ -10,7 +10,7 @@ Cada item do menu abre uma página própria. O endereço muda junto (`index.html
 | --- | --- | --- |
 | Início | `#inicio` | Frase institucional, resumo da vitrine, os 3 veículos mais novos e atalhos para as outras páginas |
 | Empresa | `#empresa` | Texto institucional, ficha da empresa e os três pilares |
-| Frota | `#frota` | Ciclo do veículo, regra dos 5 anos e a exceção (venda antecipada), tipos de veículo e o contrato com os Correios |
+| Frota | `#frota` | Ciclo do veículo, regra dos 5 anos e a exceção para veículos mais novos, tipos de veículo e o contrato com os Correios |
 | Seminovos | `#seminovos` | Vitrine com busca, filtro por tipo (vans, 3/4, toco, truck), ordenação e comparação de até 3 veículos |
 | Veículo | `#veiculo-mf-0412` | Ficha completa de cada veículo, com outros veículos sugeridos no fim |
 | Procedência | `#procedencia` | Critérios de seleção, o que o comprador leva e como o preço é formado |
@@ -28,9 +28,9 @@ O arquivo do dia a dia é o **`dados.js`**. Ele tem dois blocos:
 
 Os veículos que estão lá hoje são **exemplos** (modelos reais, mas quilometragens e preços ilustrativos). Antes de mostrar como site real, troque pelos dados da frota.
 
-## Venda antecipada
+## Veículos com menos de 5 anos
 
-A regra da empresa é vender a partir de 5 anos de operação. Todo veículo com menos tempo de frota (calculado pelo campo `frotaDesde`) ganha sozinho a etiqueta **Venda antecipada** no card, um aviso na ficha e entra no indicador da gestão. Nos exemplos, são três: Atego 2025, Volvo VM 290 2024 e Sprinter 2023.
+A regra da empresa é vender a partir de 5 anos de operação, e a página Frota explica que existem exceções. Na vitrine, esses veículos aparecem como qualquer outro, e o card e a ficha mostram o tempo de frota (calculado pelo campo `frotaDesde`). Nos exemplos, são três: Atego 2025, Volvo VM 290 2024 e Sprinter 2023.
 
 ## Fotos dos veículos
 

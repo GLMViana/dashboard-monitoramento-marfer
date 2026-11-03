@@ -33,10 +33,7 @@ const CONFIG = {
            A primeira é a capa. Lista vazia = ilustração do tipo de veículo.
 
    Para adicionar um veículo: copie um bloco { ... }, cole abaixo e troque os valores.
-   A ordem aqui não importa: a vitrine ordena sozinha.
-
-   Venda antecipada: todo veículo com menos de CONFIG.cicloPadraoAnos na frota
-   (contando a partir de frotaDesde) ganha a etiqueta automaticamente. */
+   A ordem aqui não importa: a vitrine ordena sozinha. */
 const VEICULOS_PADRAO = [
   { codigo: 'MF-0561', tipo: 'toco', marca: 'Mercedes-Benz', modelo: 'Atego', versao: '1719 Baú',
     anoFab: 2025, anoModelo: 2025, km: 41200, preco: 529900, fipe: null, status: 'disponivel',

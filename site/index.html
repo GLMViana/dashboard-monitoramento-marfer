@@ -333,8 +333,6 @@ p{text-wrap:pretty}
 .st-disponivel{background:var(--ok-suave);color:var(--ok)}
 .st-reservado{background:var(--ambar-suave);color:var(--ambar-texto)}
 .st-vendido{background:var(--vendido-suave);color:var(--vendido)}
-.st-antecipada{background:var(--marinho);color:var(--sobre)}
-.st-antecipada::before{background:var(--ambar)}
 .sem-foto{position:absolute;top:12px;right:12px;z-index:2;padding:3px 9px;border-radius:6px;background:rgba(255,255,255,.85);color:var(--tinta-2);font-size:12px;font-weight:600}
 .carro-corpo{display:flex;flex-direction:column;gap:10px;flex:1;padding:18px 20px 20px}
 .carro-meta{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12.5px;color:var(--tinta-3)}
@@ -399,8 +397,6 @@ p{text-wrap:pretty}
 .ficha-aviso{margin:0 0 14px;padding:12px 14px;border-radius:10px;font-size:14.5px}
 .ficha-aviso.reservado{background:var(--ambar-suave);color:var(--ambar-texto)}
 .ficha-aviso.vendido{background:var(--vendido-suave);color:var(--vendido)}
-.ficha-aviso.antecipada{background:var(--azul-suave);color:var(--marinho)}
-.ficha-aviso b{font-weight:700}
 .ficha-baixo{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:40px;margin-top:40px}
 .ficha-baixo h2{font-family:var(--f-dado);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--tinta-3);margin:0 0 12px}
 .odometro{display:flex;align-items:center;gap:14px;margin-bottom:18px;flex-wrap:wrap}
@@ -540,7 +536,6 @@ table.tabela{width:100%;border-collapse:collapse;font-size:14.5px}
 .acoes{white-space:nowrap}
 .acoes .btn{min-height:34px;padding:0 10px;font-size:13.5px}
 .confirma{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--erro)}
-.antecipada-mini{display:inline-block;margin-left:6px;padding:1px 6px;border-radius:5px;background:var(--marinho);color:var(--sobre);font-size:11px;font-weight:700;vertical-align:middle}
 
 /* ---------- janelas (comparação e cadastro) ---------- */
 dialog.dlg{border:0;padding:0;margin:auto;width:calc(100% - 32px);max-width:1040px;max-height:calc(100% - 48px);border-radius:18px;background:var(--papel);color:var(--tinta);box-shadow:var(--sombra-g);overflow:auto;overscroll-behavior:contain}
@@ -854,8 +849,8 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
           </div>
           <div class="regra-item excecao">
             <small>Exceção</small>
-            <h3>Venda antecipada</h3>
-            <p>Às vezes a operação pede a venda de um veículo mais novo. Ele entra na vitrine marcado como <b>Venda antecipada</b>, com os mesmos critérios e o mesmo histórico aberto.</p>
+            <h3>Veículos mais novos</h3>
+            <p>Às vezes a operação pede a venda de um veículo antes desse prazo. Ele entra na vitrine com os mesmos critérios e o mesmo histórico aberto.</p>
           </div>
         </div>
       </div>
@@ -951,7 +946,7 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
       <div class="wrap">
         <div class="secao-cab"><div><span class="rotulo">Critérios de seleção</span><h2 class="titulo">Quatro pontos conferidos em toda unidade</h2></div></div>
         <div class="criterios">
-          <div class="criterio"><svg class="ico"><use href="#i-calendario"/></svg><h3>Tempo de operação conhecido</h3><p class="js-crit-tempo">A regra é vender a partir de 5 anos na frota. Vendas antecipadas são sinalizadas na vitrine.</p></div>
+          <div class="criterio"><svg class="ico"><use href="#i-calendario"/></svg><h3>Tempo de operação conhecido</h3><p class="js-crit-tempo">A regra é vender a partir de 5 anos na frota. Cada ficha mostra há quanto tempo o veículo opera com a gente.</p></div>
           <div class="criterio"><svg class="ico"><use href="#i-chave"/></svg><h3>Estado mecânico verificado</h3><p>Motor, transmissão, freios e suspensão conferidos antes do anúncio.</p></div>
           <div class="criterio"><svg class="ico"><use href="#i-velocimetro"/></svg><h3>Quilometragem avaliada</h3><p>Analisada conforme o modelo e o histórico de uso, sem um teto fixo por tipo.</p></div>
           <div class="criterio"><svg class="ico"><use href="#i-sem-batida"/></svg><h3>Sem dano estrutural</h3><p>Nenhum veículo com histórico de dano estrutural ou acidente grave.</p></div>
@@ -1032,7 +1027,7 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
           </details>
           <details>
             <summary>Vocês vendem veículos com menos de 5 anos?<svg class="ico"><use href="#i-mais"/></svg></summary>
-            <p class="js-faq-antecipada">A regra é vender a partir de 5 anos de operação. Quando a operação pede, vendemos unidades mais novas, que aparecem na vitrine marcadas como Venda antecipada.</p>
+            <p class="js-faq-antecipada">A regra é vender a partir de 5 anos de operação. Quando a operação pede, vendemos unidades mais novas, com os mesmos critérios de seleção.</p>
           </details>
           <details>
             <summary>Como fica a documentação?<svg class="ico"><use href="#i-mais"/></svg></summary>
@@ -1364,7 +1359,6 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
   const titulo = (v) => `${v.marca} ${v.modelo}`.trim();
   const anoTxt = (v) => `${v.anoFab}/${v.anoModelo || v.anoFab}`;
   const anosNaFrota = (v) => Math.max(0, ANO_ATUAL - v.frotaDesde);
-  const antecipada = (v) => anosNaFrota(v) < CICLO;
   const tempoTxt = (anos) => anos < 1 ? 'menos de 1 ano' : plural(anos, 'ano', 'anos');
 
   /* ---------- links de contato ---------- */
@@ -1460,10 +1454,7 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
     if (v.fotos.length) return `<img src="${esc(v.fotos[0])}" alt="${esc(titulo(v))} ${esc(v.versao)}" loading="lazy">`;
     return ilustracao(v.tipo);
   }
-  function etiquetas(v) {
-    return `<span class="st st-${v.status}">${STATUS[v.status]}</span>`
-      + (antecipada(v) && v.status !== 'vendido' ? '<span class="st st-antecipada">Venda antecipada</span>' : '');
-  }
+  const etiquetas = (v) => `<span class="st st-${v.status}">${STATUS[v.status]}</span>`;
 
   /* ---------- cartões da vitrine ---------- */
   function cartao(v, opc = {}) {
@@ -1574,8 +1565,8 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
     $$('.js-cidade').forEach((e) => { e.textContent = CONFIG.cidadeSede; });
     $$('.js-ciclo-avaliacao').forEach((e) => { e.textContent = `Em geral a partir de ${CICLO} anos de operação, o veículo passa pelos critérios de venda.`; });
     $$('.js-regra-titulo').forEach((e) => { e.textContent = `Venda a partir de ${CICLO} anos de operação`; });
-    $$('.js-crit-tempo').forEach((e) => { e.textContent = `A regra é vender a partir de ${CICLO} anos na frota. Vendas antecipadas são sinalizadas na vitrine.`; });
-    $$('.js-faq-antecipada').forEach((e) => { e.textContent = `A regra é vender a partir de ${CICLO} anos de operação. Quando a operação pede, vendemos unidades mais novas, que aparecem na vitrine marcadas como Venda antecipada.`; });
+    $$('.js-crit-tempo').forEach((e) => { e.textContent = `A regra é vender a partir de ${CICLO} anos na frota. Cada ficha mostra há quanto tempo o veículo opera com a gente.`; });
+    $$('.js-faq-antecipada').forEach((e) => { e.textContent = `A regra é vender a partir de ${CICLO} anos de operação. Quando a operação pede, vendemos unidades mais novas, com os mesmos critérios de seleção.`; });
     $('#nota-fipe').textContent = `Preços com base na tabela FIPE de ${MES_VIGENTE}, ajustados pelo estado de conservação de cada veículo.`;
     $('#ano-atual').textContent = ANO_ATUAL;
 
@@ -1647,7 +1638,6 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
     let aviso = '';
     if (v.status === 'reservado') aviso = '<p class="ficha-aviso reservado">Este veículo está reservado. Fale com a gente para entrar na lista de interesse caso a negociação não avance.</p>';
     else if (v.status === 'vendido') aviso = '<p class="ficha-aviso vendido">Este veículo já foi vendido. Veja as outras unidades disponíveis na vitrine.</p>';
-    if (antecipada(v) && v.status !== 'vendido') aviso += `<p class="ficha-aviso antecipada"><b>Venda antecipada.</b> Nossa regra é vender a partir de ${CICLO} anos de operação. Este veículo tem ${tempoTxt(anos)} de frota e foi liberado antes por necessidade da operação, com os mesmos critérios de seleção.</p>`;
     const acoes = v.status === 'vendido'
       ? `<div class="ficha-acoes"><a class="btn btn-marinho" href="#seminovos">Ver veículos disponíveis</a></div>`
       : `<div class="ficha-acoes">
@@ -1658,9 +1648,7 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
           </div>
         </div>`;
     const criterios = [
-      antecipada(v)
-        ? [`${tempoTxt(anos)} de operação na frota`, `Venda antecipada (regra: a partir de ${CICLO} anos)`]
-        : [`${tempoTxt(anos)} de operação na frota`, 'Ciclo de uso completo'],
+      [`${tempoTxt(anos)} de operação na frota Marfer`, ''],
       ['Estado mecânico verificado', ''],
       ['Quilometragem avaliada para o modelo', ''],
       ['Sem dano estrutural ou acidente grave', '']
@@ -1778,19 +1766,20 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
     const cont = (s) => veiculos.filter((v) => v.status === s).length;
     const emVitrine = veiculos.filter((v) => v.status !== 'vendido');
     const valor = emVitrine.filter((v) => v.preco != null).reduce((s, v) => s + v.preco, 0);
-    const nAntecipada = emVitrine.filter(antecipada).length;
+    const disp = veiculos.filter((v) => v.status === 'disponivel' && v.preco != null);
+    const medio = disp.length ? disp.reduce((s, v) => s + v.preco, 0) / disp.length : null;
     const kmMedio = tot ? veiculos.reduce((s, v) => s + v.km, 0) / tot : 0;
     $('#g-sub').textContent = `${plural(tot, 'veículo cadastrado', 'veículos cadastrados')}. Protótipo local: as alterações ficam salvas só neste navegador.`;
     $('#kpis').innerHTML = [
       ['Disponíveis', cont('disponivel'), 'ok'], ['Reservados', cont('reservado'), 'alerta'], ['Vendidos', cont('vendido'), 'cinza'],
-      ['Vendas antecipadas', nAntecipada, ''], ['Valor em vitrine', fmtBRL(valor), ''], ['Km médio', fmtNum(kmMedio), '']
+      ['Preço médio à venda', medio == null ? 'Sem dados' : fmtBRL(medio), ''], ['Valor em vitrine', fmtBRL(valor), ''], ['Km médio', fmtNum(kmMedio), '']
     ].map(([r, v, c]) => `<div class="kpi ${c}"><small>${r}</small><strong title="${esc(v)}">${v}</strong></div>`).join('');
 
     const ordenados = veiculos.slice().sort(ordemRecentes);
     $('#g-tabela tbody').innerHTML = ordenados.map((v) => `<tr data-codigo="${esc(v.codigo)}">
       <td><div class="mini">${midia(v)}</div></td>
       <td class="mono"><a href="#veiculo-${slug(v.codigo)}">${esc(v.codigo)}</a></td>
-      <td><strong>${esc(titulo(v))}</strong>${antecipada(v) && v.status !== 'vendido' ? '<span class="antecipada-mini">Antecipada</span>' : ''}<br><small>${esc(v.versao)} · ${TIPOS[v.tipo].rotulo}</small></td>
+      <td><strong>${esc(titulo(v))}</strong><br><small>${esc(v.versao)} · ${TIPOS[v.tipo].rotulo}</small></td>
       <td class="num">${anoTxt(v)}</td>
       <td class="num">${fmtNum(v.km)}</td>
       <td class="num">${fmtBRL(v.preco)}</td>
