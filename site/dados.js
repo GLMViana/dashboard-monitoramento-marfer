@@ -33,7 +33,10 @@ const CONFIG = {
            A primeira é a capa. Lista vazia = ilustração do tipo de veículo.
 
    Para adicionar um veículo: copie um bloco { ... }, cole abaixo e troque os valores.
-   A ordem aqui não importa: a vitrine ordena sozinha. */
+   A ordem aqui não importa: a vitrine ordena sozinha.
+
+   Venda antecipada: todo veículo com menos de CONFIG.cicloPadraoAnos na frota
+   (contando a partir de frotaDesde) ganha a etiqueta automaticamente. */
 const VEICULOS_PADRAO = [
   { codigo: 'MF-0561', tipo: 'toco', marca: 'Mercedes-Benz', modelo: 'Atego', versao: '1719 Baú',
     anoFab: 2025, anoModelo: 2025, km: 41200, preco: 529900, fipe: null, status: 'disponivel',
@@ -46,8 +49,8 @@ const VEICULOS_PADRAO = [
     destaques: ['Histórico de manutenção completo'], fotos: [] },
 
   { codigo: 'MF-0547', tipo: 'van', marca: 'Renault', modelo: 'Master', versao: '2.3 dCi L3H2 Furgão',
-    anoFab: 2024, anoModelo: 2025, km: 58700, preco: 229900, fipe: null, status: 'disponivel',
-    combustivel: 'Diesel', cambio: 'Manual', carroceria: 'Furgão', cor: 'Branca', frotaDesde: 2024, local: 'Santa Maria/RS',
+    anoFab: 2021, anoModelo: 2022, km: 218400, preco: 169900, fipe: null, status: 'disponivel',
+    combustivel: 'Diesel', cambio: 'Manual', carroceria: 'Furgão', cor: 'Branca', frotaDesde: 2021, local: 'Santa Maria/RS',
     destaques: [], fotos: [] },
 
   { codigo: 'MF-0518', tipo: 'van', marca: 'Mercedes-Benz', modelo: 'Sprinter', versao: '417 Furgão Teto Alto',
@@ -56,8 +59,8 @@ const VEICULOS_PADRAO = [
     destaques: ['Histórico de manutenção completo'], fotos: [] },
 
   { codigo: 'MF-0526', tipo: 'leve', marca: 'Volkswagen', modelo: 'Delivery', versao: '11.180 Baú',
-    anoFab: 2023, anoModelo: 2023, km: 112400, preco: 329900, fipe: null, status: 'reservado',
-    combustivel: 'Diesel', cambio: 'Manual', carroceria: 'Baú', cor: 'Branca', frotaDesde: 2023, local: 'Santa Maria/RS',
+    anoFab: 2021, anoModelo: 2021, km: 236900, preco: 259900, fipe: null, status: 'reservado',
+    combustivel: 'Diesel', cambio: 'Manual', carroceria: 'Baú', cor: 'Branca', frotaDesde: 2021, local: 'Santa Maria/RS',
     destaques: [], fotos: [] },
 
   { codigo: 'MF-0533', tipo: 'toco', marca: 'Mercedes-Benz', modelo: 'Atego', versao: '1719 Baú',
