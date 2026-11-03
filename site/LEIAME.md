@@ -14,7 +14,7 @@ Cada item do menu abre uma página própria. O endereço muda junto (`index.html
 | Seminovos | `#seminovos` | Vitrine com busca, filtro por tipo (vans, 3/4, toco, truck), ordenação e comparação de até 3 veículos |
 | Veículo | `#veiculo-mf-0412` | Ficha de cada veículo, com outros veículos sugeridos no fim |
 | Procedência | `#procedencia` | Critérios de seleção, o que o comprador leva e como o preço é formado |
-| Contato | `#contato` | Como comprar em 4 passos, WhatsApp, Instagram, QR code e formulário que monta a mensagem |
+| Contato | `#contato` | Como comprar em 4 passos, WhatsApp, Instagram, QR code, formulário que monta a mensagem e perguntas frequentes |
 
 Cada informação aparece num lugar só: a regra dos 5 anos fica em Frota, os critérios e o preço justo em Procedência, o passo a passo em Contato.
 | Gestão | `#gestao` | Link no rodapé. Painel para cadastrar, editar, excluir e mudar o status dos veículos |

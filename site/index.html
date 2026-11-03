@@ -435,7 +435,16 @@ p{text-wrap:pretty}
 .passo-num{display:block;font-family:var(--f-titulo);font-size:56px;font-weight:800;line-height:.9;color:var(--azul);margin-bottom:14px}
 .passo h3{font-family:var(--f-titulo);font-size:24px;font-weight:700;line-height:1.1;color:var(--marinho);margin:0 0 8px}
 .passo p{margin:0;color:var(--tinta-2);font-size:15.5px}
-@media (max-width:960px){.passos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.faq{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:48px;align-items:start}
+.faq-lista{border-top:1px solid var(--linha)}
+.faq details{border-bottom:1px solid var(--linha)}
+.faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;cursor:pointer;font-weight:600;font-size:17.5px;color:var(--tinta)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ico{transition:transform .2s;color:var(--azul-texto)}
+.faq details[open] summary .ico{transform:rotate(45deg)}
+.faq summary:hover{color:var(--marinho)}
+.faq details p{margin:-6px 0 20px;color:var(--tinta-2);max-width:64ch}
+@media (max-width:960px){.passos{grid-template-columns:repeat(2,minmax(0,1fr))}.faq{grid-template-columns:1fr;gap:20px}}
 @media (max-width:560px){.passos{grid-template-columns:1fr}}
 
 /* ---------- contato ---------- */
@@ -996,6 +1005,36 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
         </form>
       </div>
     </section>
+    <section class="secao secao-nevoa">
+      <div class="wrap faq">
+        <div>
+          <span class="rotulo">Dúvidas</span>
+          <h2 class="titulo">Perguntas frequentes</h2>
+        </div>
+        <div class="faq-lista">
+          <details>
+            <summary>Como vocês definem o preço?<svg class="ico"><use href="#i-mais"/></svg></summary>
+            <p>Usamos a tabela FIPE do mês vigente como base e ajustamos pelo estado real de cada veículo. Sem inflação artificial e sem desconto impossível.</p>
+          </details>
+          <details>
+            <summary>Os veículos passam por alguma seleção?<svg class="ico"><use href="#i-mais"/></svg></summary>
+            <p>Sim. Antes de ir à venda, cada veículo tem o estado mecânico verificado, a quilometragem avaliada para o modelo e nenhum histórico de dano estrutural ou acidente grave.</p>
+          </details>
+          <details>
+            <summary>Vocês vendem veículos com menos de 5 anos?<svg class="ico"><use href="#i-mais"/></svg></summary>
+            <p class="js-faq-ciclo">A regra é vender a partir de 5 anos de operação. Quando a operação pede, vendemos unidades mais novas, com os mesmos critérios de seleção.</p>
+          </details>
+          <details>
+            <summary>Os veículos vêm com a identidade visual dos Correios?<svg class="ico"><use href="#i-mais"/></svg></summary>
+            <p>Não. Os veículos que rodaram no contrato com os Correios vão à venda sem a identidade visual da operação.</p>
+          </details>
+          <details>
+            <summary>Posso comparar veículos antes de chamar?<svg class="ico"><use href="#i-mais"/></svg></summary>
+            <p>Pode. Na vitrine de seminovos, marque Comparar em até 3 veículos para ver preço, ano, quilometragem e tempo de frota lado a lado.</p>
+          </details>
+        </div>
+      </div>
+    </section>
   </div>
 
   <!-- ===================== PÁGINA: GESTÃO ===================== -->
@@ -1461,6 +1500,7 @@ dialog.dlg::backdrop{background:rgba(8,26,69,.62);-webkit-backdrop-filter:blur(3
     $$('.js-sede').forEach((e) => { e.textContent = sede; });
     $$('.js-cidade').forEach((e) => { e.textContent = CONFIG.cidadeSede; });
     $$('.js-regra-titulo').forEach((e) => { e.textContent = `Venda a partir de ${CICLO} anos de operação`; });
+    $$('.js-faq-ciclo').forEach((e) => { e.textContent = `A regra é vender a partir de ${CICLO} anos de operação. Quando a operação pede, vendemos unidades mais novas, com os mesmos critérios de seleção.`; });
     $('#nota-fipe').textContent = `Preços com base na tabela FIPE de ${MES_VIGENTE}, ajustados pelo estado de conservação de cada veículo.`;
     $('#ano-atual').textContent = ANO_ATUAL;
 
